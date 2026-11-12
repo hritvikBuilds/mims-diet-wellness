@@ -1,0 +1,1928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dt Mimmy | Nourish Delight — Hormone Health, Postpartum & Diet Coach</title>
+  <meta name="description" content="Certified Dietitian dt Mimmy (@mimsdiet7). Hormonal Imbalance, Postpartum Weight Loss, Lifestyle Disorder Reversal & Workout Coaching.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+  <!-- Google Firebase Free Tier (Phone OTP Auth + Cloud Firestore) -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     TOP ANNOUNCEMENT BANNER (Figma: Top Banner)
+═══════════════════════════════════════════ -->
+<div id="topBanner">
+  <div class="inner">
+    <img src="assets/figma/abstract-left.svg" alt="" class="abstract left">
+    <img src="assets/figma/abstract-right.svg" alt="" class="abstract right">
+    <span style="font-size:16px; font-weight:600; color:#fff; display:flex; align-items:center; gap:8px;">
+      🌱 Limited slots open — Book your <strong style="color:#CBEA7B;">&nbsp;Free 15-Min Discovery Call&nbsp;</strong> with dt Mimmy now!
+    </span>
+    <button class="dismiss" onclick="document.getElementById('topBanner').remove()" aria-label="Close" style="background:#EF4444; border:none; border-radius:6px; width:28px; height:28px; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     NAVBAR (De-congested & Polished)
+═══════════════════════════════════════════ -->
+<header id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <img src="assets/mimmy_mascot_avatar.svg" alt="dt Mimmy Mascot" class="nav-avatar">
+      <div class="nav-brand-text">
+        <div class="nav-brand-title">dt Mimmy</div>
+        <div class="nav-brand-sub">Nourish Delight</div>
+      </div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#hero" class="active">Home</a>
+      <a href="#features">Specializations</a>
+      <a href="#quiz">Free Quiz</a>
+      <a href="#swaps">Food Swaps</a>
+      <a href="#pricing">Programs</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="nav-right">
+      <button id="navPortalBtn" onclick="toggleAuthModal()" class="nav-portal-btn" style="display:none;" aria-hidden="true">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="display:inline;vertical-align:middle;margin-right:4px;"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <span id="navPortalLabel">Client Portal</span>
+      </button>
+      <a href="#quiz" class="nav-quiz-btn">Free Health Quiz</a>
+      <button id="mobileMenuBtn" onclick="toggleMobileNav()" aria-label="Menu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<div id="mobileNav">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <img src="assets/mimmy_mascot_avatar.svg" alt="dt Mimmy" style="width:36px;height:36px;border-radius:50%;border:2px solid #CBEA7B;">
+      <span style="color:#CBEA7B;font-size:20px;font-weight:800;">dt Mimmy</span>
+    </div>
+    <button onclick="toggleMobileNav()" style="background:none;border:none;cursor:pointer;color:white;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <a href="#hero" onclick="toggleMobileNav()">Home</a>
+  <a href="#features" onclick="toggleMobileNav()">Specializations</a>
+  <a href="#quiz" onclick="toggleMobileNav()">Free Health Quiz</a>
+  <a href="#swaps" onclick="toggleMobileNav()">Food Swaps</a>
+  <a href="#pricing" onclick="toggleMobileNav()">Programs</a>
+  <a href="#about" onclick="toggleMobileNav()">About</a>
+  <a href="#faq" onclick="toggleMobileNav()">FAQ</a>
+  <div style="margin-top:16px;display:flex;flex-direction:column;gap:12px;">
+    <button id="mobilePortalBtn" onclick="toggleAuthModal();toggleMobileNav();" class="btn-dark" style="display:none;width:100%;justify-content:center;" aria-hidden="true">Client Portal</button>
+    <a href="#quiz" onclick="toggleMobileNav()" class="btn-primary" style="text-decoration:none;justify-content:center;">Take Free Quiz</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     HERO SECTION (Bio-Vitality Hub & High-Contrast Visuals)
+═══════════════════════════════════════════ -->
+<section id="hero">
+  <!-- Parallax Background Animation Layer -->
+  <div class="hero-parallax-bg" id="heroParallaxBg">
+    <!-- Layer 0: Deepest ambient dual-tone glow (Emerald & Soft Light-Pink) -->
+    <div class="parallax-layer" data-depth="0.02">
+      <div class="bio-ambient-glow glow-emerald"></div>
+      <div class="bio-ambient-glow glow-pink"></div>
+    </div>
+
+    <!-- Layer 1: Floating Light-Pink Petals & Lime Spores (slow parallax) -->
+    <div class="parallax-layer" data-depth="0.04">
+      <div class="bio-particle p1 lime"></div>
+      <div class="bio-particle p2 pink"></div>
+      <div class="bio-particle p3 lime"></div>
+      <div class="bio-particle p4 lime"></div>
+      <div class="bio-particle p5 lime"></div>
+      <div class="bio-particle p6 pink"></div>
+      <div class="bio-particle p7 lime"></div>
+      <div class="bio-particle p8 lime"></div>
+    </div>
+
+    <!-- Layer 2: Harmonic Bio-Rhythm Wave & Concentric Breathing Petal Rings (low opacity) -->
+    <div class="parallax-layer" data-depth="0.06">
+      <div id="vitalityHub" class="health-visual-container">
+        <!-- Breathing Harmonic Bio-Rings with Soft Pink & Lime Tones -->
+        <div class="health-orbit-ring orbit-outer">
+          <div class="orbit-node node-top" title="Follicular Phase">
+            <span class="orbit-pearl pink-pearl"></span>
+            <span class="orbit-tooltip">🌸 Follicular</span>
+          </div>
+          <div class="orbit-node node-right" title="Ovulatory Phase">
+            <span class="orbit-pearl lime-pearl"></span>
+            <span class="orbit-tooltip">⚡ Ovulatory</span>
+          </div>
+          <div class="orbit-node node-bottom" title="Luteal Phase">
+            <span class="orbit-pearl pink-pearl"></span>
+            <span class="orbit-tooltip">🥑 Luteal</span>
+          </div>
+          <div class="orbit-node node-left" title="Menstrual Phase">
+            <span class="orbit-pearl lime-pearl"></span>
+            <span class="orbit-tooltip">🌙 Menstrual</span>
+          </div>
+        </div>
+        <div class="health-orbit-ring orbit-middle"></div>
+        <div class="health-orbit-ring orbit-inner"></div>
+
+        <!-- Center Ethereal Bio-Pulse Aura (Minimal, No Distracting Background Text) -->
+        <div class="vitality-core">
+          <div class="core-pulse-ring ring-1"></div>
+          <div class="core-pulse-ring ring-2"></div>
+          <div class="core-inner-disc"></div>
+        </div>
+
+        <!-- Live Harmonic Dual-Color Metabolic Wave SVG (Soft Pink & Lime Gradient) -->
+        <div class="wave-container">
+          <svg class="metabolic-wave" viewBox="0 0 500 80" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#2D6A4F" stop-opacity="0.2"/>
+                <stop offset="30%" stop-color="#CBEA7B" stop-opacity="0.7"/>
+                <stop offset="50%" stop-color="#CBEA7B" stop-opacity="0.85"/>
+                <stop offset="75%" stop-color="#FFB6C1" stop-opacity="0.45"/>
+                <stop offset="100%" stop-color="#2D6A4F" stop-opacity="0.2"/>
+              </linearGradient>
+            </defs>
+            <path class="wave-path" d="M 0,40 Q 60,40 100,40 T 140,15 T 170,65 T 200,40 T 270,40 T 310,10 T 340,70 T 370,40 T 500,40" />
+          </svg>
+        </div>
+
+        <!-- Minimal Bio-Sync Live Indicator (clean & unobtrusive) -->
+        <div class="visual-live-ticker">
+          <div class="vlt-pulse"></div>
+          <span class="vlt-text">Bio-Endocrine Balance</span>
+          <div class="vlt-eq">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+
+  <!-- Cursor glow follower -->
+  <div class="hero-cursor-glow" id="heroCursorGlow"></div>
+
+  <!-- Hero Content Layer (on top of animation) -->
+  <div class="hero-content-overlay">
+    <div class="hero-content-col">
+      <div style="display:flex;flex-direction:column;gap:24px;width:100%;align-items:center;">
+        <div>
+          <span class="hero-tag">Transform Your ❤️ Health with dt Mimmy</span>
+        </div>
+
+        <!-- Interactive Hero Heading with Draped Nature & Clinical Reveal Layers -->
+        <div class="hero-heading-wrap" id="heroHeadingWrap">
+          <h1 class="hero-heading">
+            Personalized <span class="highlight">Hormone &amp; Nutrition</span> Coaching
+          </h1>
+
+          <!-- Nature & Clinical Layers (3D Realistic Leaves, Stethoscope, Superfood Avocado) -->
+          <!-- Draping over the hero text; on hover/cursor interaction, all layers smoothly glide aside -->
+          <div class="hero-reveal-veil" id="heroRevealVeil" aria-hidden="true">
+            <!-- 1. Clinical Stethoscope Layer -->
+            <div class="reveal-elem elem-steth" id="revElemSteth">
+              <svg viewBox="0 0 240 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Binaural metal tubes with 3D chrome sheen -->
+                <path d="M 65,16 C 65,38 82,58 104,68 L 120,78 C 142,88 158,105 158,132" stroke="#486B5D" stroke-width="7" stroke-linecap="round"/>
+                <path d="M 65,16 C 65,38 82,58 104,68 L 120,78 C 142,88 158,105 158,132" stroke="#A7D4C2" stroke-width="4.5" stroke-linecap="round"/>
+                <path d="M 66,15 C 66,37 83,57 105,67 L 121,77" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" opacity="0.8"/>
+
+                <path d="M 175,16 C 175,38 158,58 136,68" stroke="#486B5D" stroke-width="7" stroke-linecap="round"/>
+                <path d="M 175,16 C 175,38 158,58 136,68" stroke="#A7D4C2" stroke-width="4.5" stroke-linecap="round"/>
+                <path d="M 174,15 C 174,37 157,57 137,67" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" opacity="0.8"/>
+
+                <!-- Chrome earpieces -->
+                <circle cx="65" cy="16" r="6.5" fill="#E8F4F0" stroke="#2D4D40" stroke-width="2.5"/>
+                <circle cx="175" cy="16" r="6.5" fill="#E8F4F0" stroke="#2D4D40" stroke-width="2.5"/>
+
+                <!-- Flexible dark forest rubber tubing wrapping across text -->
+                <path d="M 120,78 C 108,110 142,128 165,116 C 192,102 205,134 188,145 C 170,156 142,140 125,142" stroke="#05140D" stroke-width="10" stroke-linecap="round" opacity="0.75"/>
+                <path d="M 120,78 C 108,110 142,128 165,116 C 192,102 205,134 188,145 C 170,156 142,140 125,142" stroke="#102C20" stroke-width="8" stroke-linecap="round"/>
+                <path d="M 120,78 C 108,110 142,128 165,116 C 192,102 205,134 188,145 C 170,156 142,140 125,142" stroke="#1E523C" stroke-width="5" stroke-linecap="round"/>
+                <path d="M 121,77 C 109,109 143,127 166,115 C 193,101 204,133 189,144" stroke="#4DA37D" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+
+                <!-- Chest-piece (Bell & Diaphragm) with metallic sheen & lime acoustic center -->
+                <circle cx="125" cy="142" r="16" fill="#0A1E16" opacity="0.6"/>
+                <circle cx="125" cy="142" r="15" fill="#DFEBE6" stroke="#3D6655" stroke-width="2.5"/>
+                <circle cx="125" cy="142" r="10" fill="#8CAFA0"/>
+                <circle cx="125" cy="142" r="5" fill="#CBEA7B" stroke="#275E44" stroke-width="1.2"/>
+                <!-- Specular highlight on chestpiece rim -->
+                <path d="M 115,135 C 120,130 130,130 135,135" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+              </svg>
+            </div>
+
+            <!-- 2. Realistic 3D Green Wheat Bud / Spike (Lower-Left, Draping over "Hormone") -->
+            <div class="reveal-elem elem-wheat" id="revElemWheat">
+              <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <!-- Soft 3D Cast Shadow -->
+                  <filter id="wheatShadow" x="-30%" y="-20%" width="160%" height="150%">
+                    <feDropShadow dx="-4" dy="12" stdDeviation="8" flood-color="#02140A" flood-opacity="0.85"/>
+                  </filter>
+
+                  <!-- Wheat Stem Gradient -->
+                  <linearGradient id="wheatStemGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+                    <stop offset="0%" stop-color="#1E3E12"/>
+                    <stop offset="40%" stop-color="#3F7A24"/>
+                    <stop offset="100%" stop-color="#65A30D"/>
+                  </linearGradient>
+
+                  <!-- Plump Grain Sunlit Gradient -->
+                  <linearGradient id="grainGradL" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#D9F99D"/>
+                    <stop offset="30%" stop-color="#A3E635"/>
+                    <stop offset="70%" stop-color="#65A30D"/>
+                    <stop offset="100%" stop-color="#365314"/>
+                  </linearGradient>
+
+                  <!-- Grain Shadow Gradient -->
+                  <linearGradient id="grainGradR" x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#BEF264"/>
+                    <stop offset="35%" stop-color="#84CC16"/>
+                    <stop offset="75%" stop-color="#4D7C0F"/>
+                    <stop offset="100%" stop-color="#1A2E05"/>
+                  </linearGradient>
+
+                  <!-- Awn Bristle Gradient -->
+                  <linearGradient id="awnGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+                    <stop offset="0%" stop-color="#4D7C0F"/>
+                    <stop offset="60%" stop-color="#84CC16"/>
+                    <stop offset="100%" stop-color="#D9F99D"/>
+                  </linearGradient>
+
+                  <!-- Dewdrop Gradient -->
+                  <radialGradient id="dewDropGradW" cx="35%" cy="35%" r="65%">
+                    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+                    <stop offset="50%" stop-color="#D9F99D" stop-opacity="0.7"/>
+                    <stop offset="100%" stop-color="#365314" stop-opacity="0.9"/>
+                  </radialGradient>
+                </defs>
+
+                <g filter="url(#wheatShadow)">
+                  <!-- Long Whispering Awns (Spike Bristles ascending upwards matching reference photo) -->
+                  <g stroke="url(#awnGrad)" stroke-linecap="round" opacity="0.8">
+                    <path d="M 88,140 C 65,110 40,75 32,25" stroke-width="1.2"/>
+                    <path d="M 92,125 C 72,95 50,60 45,15" stroke-width="1.2"/>
+                    <path d="M 94,110 C 78,80 62,50 58,8" stroke-width="1.3"/>
+                    <path d="M 96,95 C 82,65 72,35 70,5" stroke-width="1.3"/>
+                    <path d="M 98,80 C 88,50 82,25 80,2" stroke-width="1.4"/>
+                    <path d="M 100,65 C 95,40 92,18 92,0" stroke-width="1.4"/>
+                    <path d="M 102,50 C 100,30 100,12 101,0" stroke-width="1.4"/>
+
+                    <path d="M 112,140 C 135,110 160,75 168,25" stroke-width="1.2"/>
+                    <path d="M 108,125 C 128,95 150,60 155,15" stroke-width="1.2"/>
+                    <path d="M 106,110 C 122,80 138,50 142,8" stroke-width="1.3"/>
+                    <path d="M 104,95 C 118,65 128,35 130,5" stroke-width="1.3"/>
+                    <path d="M 102,80 C 112,50 118,25 120,2" stroke-width="1.4"/>
+                    <path d="M 101,65 C 105,40 108,18 109,0" stroke-width="1.4"/>
+                  </g>
+
+                  <!-- Main Central Rachis / Stalk -->
+                  <path d="M 100,238 C 100,190 98,130 100,45" stroke="url(#wheatStemGrad)" stroke-width="4.5" stroke-linecap="round"/>
+                  <path d="M 99,238 C 99,190 97,130 99,45" stroke="#BEF264" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+
+                  <!-- Lower Curving Flag Blade (Leaf) -->
+                  <path d="M 100,210 C 75,195 55,160 52,130 C 58,155 78,185 100,195 Z" fill="#4D7C0F" stroke="#275E19" stroke-width="1.2"/>
+                  <path d="M 100,210 Q 65,175 52,130" stroke="#A3E635" stroke-width="1.2" opacity="0.8"/>
+
+                  <!-- Stacked Alternating Wheat Spikelet Kernels -->
+                  <!-- Grain Pair 1 (Bottom) -->
+                  <g>
+                    <path d="M 98,172 C 84,168 76,155 84,144 C 92,142 98,154 98,172 Z" fill="url(#grainGradL)" stroke="#275E19" stroke-width="1.2"/>
+                    <path d="M 84,144 C 70,120 54,95 44,55" stroke="url(#awnGrad)" stroke-width="1.2" stroke-linecap="round"/>
+                    <path d="M 102,172 C 116,168 124,155 116,144 C 108,142 102,154 102,172 Z" fill="url(#grainGradR)" stroke="#275E19" stroke-width="1.2"/>
+                    <path d="M 116,144 C 130,120 146,95 156,55" stroke="url(#awnGrad)" stroke-width="1.2" stroke-linecap="round"/>
+                  </g>
+
+                  <!-- Grain Pair 2 -->
+                  <g>
+                    <path d="M 98,156 C 82,152 74,138 82,127 C 91,125 98,138 98,156 Z" fill="url(#grainGradL)" stroke="#275E19" stroke-width="1.2"/>
+                    <path d="M 82,127 C 66,100 48,72 38,32" stroke="url(#awnGrad)" stroke-width="1.3" stroke-linecap="round"/>
+                    <path d="M 102,156 C 118,152 126,138 118,127 C 109,125 102,138 102,156 Z" fill="url(#grainGradR)" stroke="#275E19" stroke-width="1.2"/>
+                    <path d="M 118,127 C 134,100 152,72 162,32" stroke="url(#awnGrad)" stroke-width="1.3" stroke-linecap="round"/>
+                  </g>
+
+                  <!-- Grain Pair 3 -->
+                  <g>
+                    <path d="M 98,140 C 80,135 72,120 80,109 C 89,107 98,120 98,140 Z" fill="url(#grainGradL)" stroke="#275E19" stroke-width="1.2"/>
+                    <path d="M 80,109 C 66,80 50,50 42,16" stroke="url(#awnGrad)" stroke-width="1.4" stroke-linecap="round"/>
+                    <path d="M 102,140 C 120,135 128,120 120,109 C 111,107 102,120 102,140 Z" fill="url(#grainGradR)" stroke="#275E19" stroke-width="1.2"/>
+                    <path d="M 120,109 C 134,80 150,50 158,16" stroke="url(#awnGrad)" stroke-width="1.4" stroke-linecap="round"/>
+                  </g>
+
+                  <!-- Grain Pair 4 -->
+                  <g>
+                    <path d="M 98,124 C 80,118 72,103 81,92 C 90,90 98,103 98,124 Z" fill="url(#grainGradL)" stroke="#275E19" stroke-width="1.2"/>
+                    <path d="M 81,92 C 70,65 58,35 52,5" stroke="url(#awnGrad)" stroke-width="1.4" stroke-linecap="round"/>
+                    <path d="M 102,124 C 120,118 128,103 119,92 C 110,90 102,103 102,124 Z" fill="url(#grainGradR)" stroke="#275E19" stroke-width="1.2"/>
+                    <path d="M 119,92 C 130,65 142,35 148,5" stroke="url(#awnGrad)" stroke-width="1.4" stroke-linecap="round"/>
+                  </g>
+
+                  <!-- Grain Pair 5 -->
+                  <g>
+                    <path d="M 98,107 C 82,100 74,86 83,75 C 91,73 98,86 98,107 Z" fill="url(#grainGradL)" stroke="#275E19" stroke-width="1.2"/>
+                    <path d="M 83,75 C 75,50 66,22 64,0" stroke="url(#awnGrad)" stroke-width="1.4" stroke-linecap="round"/>
+                    <path d="M 102,107 C 118,100 126,86 117,75 C 109,73 102,86 102,107 Z" fill="url(#grainGradR)" stroke="#275E19" stroke-width="1.2"/>
+                    <path d="M 117,75 C 125,50 134,22 136,0" stroke="url(#awnGrad)" stroke-width="1.4" stroke-linecap="round"/>
+                  </g>
+
+                  <!-- Grain Pair 6 (Top Taper) -->
+                  <g>
+                    <path d="M 98,90 C 85,84 80,70 87,60 C 93,58 98,70 98,90 Z" fill="url(#grainGradL)" stroke="#275E19" stroke-width="1.2"/>
+                    <path d="M 87,60 C 82,38 78,15 76,-5" stroke="url(#awnGrad)" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M 102,90 C 115,84 120,70 113,60 C 107,58 102,70 102,90 Z" fill="url(#grainGradR)" stroke="#275E19" stroke-width="1.2"/>
+                    <path d="M 113,60 C 118,38 122,15 124,-5" stroke="url(#awnGrad)" stroke-width="1.5" stroke-linecap="round"/>
+                  </g>
+
+                  <!-- Terminal Spikelet (Apex) -->
+                  <g>
+                    <path d="M 95,74 C 92,60 97,45 100,36 C 103,45 108,60 105,74 Z" fill="url(#grainGradL)" stroke="#275E19" stroke-width="1.2"/>
+                    <path d="M 100,36 C 100,18 100,0 100,-15" stroke="url(#awnGrad)" stroke-width="1.6" stroke-linecap="round"/>
+                    <path d="M 98,40 C 94,22 90,5 88,-10" stroke="url(#awnGrad)" stroke-width="1.3" stroke-linecap="round"/>
+                    <path d="M 102,40 C 106,22 110,5 112,-10" stroke="url(#awnGrad)" stroke-width="1.3" stroke-linecap="round"/>
+                  </g>
+
+                  <!-- Specular Kernel Highlights & Texture -->
+                  <path d="M 85,150 Q 88,145 92,147" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+                  <path d="M 83,133 Q 86,128 90,130" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" opacity="0.65"/>
+                  <path d="M 82,115 Q 85,110 90,112" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+                  <path d="M 83,98 Q 86,93 91,95" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+                  <path d="M 85,81 Q 88,77 92,79" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" opacity="0.75"/>
+
+                  <!-- Morning Dew Drops -->
+                  <ellipse cx="86" cy="118" rx="3.5" ry="2.6" fill="url(#dewDropGradW)"/>
+                  <circle cx="85.5" cy="117.5" r="0.9" fill="#FFFFFF"/>
+                  <ellipse cx="114" cy="102" rx="3" ry="2.2" fill="url(#dewDropGradW)"/>
+                  <circle cx="113.5" cy="101.5" r="0.8" fill="#FFFFFF"/>
+                </g>
+              </svg>
+            </div>
+
+            <!-- 3. Superfood Hormone-Balancing 3D Avocado (Top-Left, Replacing Left Leaf, Draping over "Perso") -->
+            <div class="reveal-elem elem-avo" id="revElemAvo">
+              <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <!-- Deep 3D Cast Shadow -->
+                  <filter id="avoSelfShadow" x="-25%" y="-20%" width="150%" height="150%">
+                    <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#02140A" flood-opacity="0.85"/>
+                  </filter>
+
+                  <!-- Pit Socket Shadow -->
+                  <radialGradient id="pitSocketGrad" cx="45%" cy="40%" r="55%">
+                    <stop offset="0%" stop-color="#4A260C" stop-opacity="0.85"/>
+                    <stop offset="70%" stop-color="#7A451A" stop-opacity="0.4"/>
+                    <stop offset="100%" stop-color="#A16226" stop-opacity="0"/>
+                  </radialGradient>
+
+                  <!-- Creamy Avocado Flesh Gradient -->
+                  <radialGradient id="avoFleshGrad" cx="50%" cy="58%" r="58%">
+                    <stop offset="0%" stop-color="#FFF8B8"/>
+                    <stop offset="28%" stop-color="#EAF59B"/>
+                    <stop offset="55%" stop-color="#A5DB68"/>
+                    <stop offset="80%" stop-color="#4C9640"/>
+                    <stop offset="94%" stop-color="#245A2B"/>
+                    <stop offset="100%" stop-color="#13381B"/>
+                  </radialGradient>
+
+                  <!-- 3D Seed Spherical Gradient -->
+                  <radialGradient id="avoSeedGrad" cx="35%" cy="32%" r="65%">
+                    <stop offset="0%" stop-color="#E8A870"/>
+                    <stop offset="20%" stop-color="#BF753B"/>
+                    <stop offset="55%" stop-color="#804118"/>
+                    <stop offset="85%" stop-color="#4A2007"/>
+                    <stop offset="100%" stop-color="#240E03"/>
+                  </radialGradient>
+
+                  <!-- Outer pebbled dark skin gradient -->
+                  <linearGradient id="avoSkinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#274A33"/>
+                    <stop offset="45%" stop-color="#142E1F"/>
+                    <stop offset="100%" stop-color="#0A1810"/>
+                  </linearGradient>
+
+                  <!-- Mint sprig gradient -->
+                  <linearGradient id="sprigGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#A3E635"/>
+                    <stop offset="100%" stop-color="#2E7D32"/>
+                  </linearGradient>
+                </defs>
+
+                <g filter="url(#avoSelfShadow)">
+                  <!-- Outer Dark Textured Peel/Skin -->
+                  <path d="M 90,14 C 118,14 142,38 146,72 C 150,105 160,132 142,156 C 124,178 56,178 38,156 C 20,132 30,105 34,72 C 38,38 62,14 90,14 Z" fill="url(#avoSkinGrad)" stroke="#396645" stroke-width="2.5"/>
+
+                  <!-- Peel Rim Specular Highlight (Giving 3D curved thickness) -->
+                  <path d="M 88,18 C 114,18 136,40 140,72 C 144,103 154,128 138,150 C 122,170 58,170 42,150 C 26,128 36,103 40,72 C 44,40 66,18 88,18 Z" fill="none" stroke="#68A876" stroke-width="1.2" opacity="0.6"/>
+
+                  <!-- Luscious Creamy Avocado Flesh -->
+                  <path d="M 90,20 C 114,20 134,42 138,72 C 142,102 150,126 136,148 C 120,168 60,168 44,148 C 30,126 38,102 42,72 C 46,42 66,20 90,20 Z" fill="url(#avoFleshGrad)"/>
+
+                  <!-- Subtle fleshy highlight sheen arc on left cheek -->
+                  <path d="M 52,65 C 48,90 46,120 60,140" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.35" filter="blur(2px)"/>
+
+                  <!-- Seed Socket Hollow Shadow -->
+                  <ellipse cx="90" cy="115" rx="34" ry="36" fill="url(#pitSocketGrad)"/>
+
+                  <!-- 3D Spherical Avocado Pit / Seed -->
+                  <ellipse cx="90" cy="115" rx="30" ry="33" fill="url(#avoSeedGrad)"/>
+
+                  <!-- Seed Texture Rings & Specular Light Reflection -->
+                  <path d="M 80,94 C 88,92 98,94 103,100" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round" opacity="0.8"/>
+                  <circle cx="82" cy="98" r="1.5" fill="#FFFFFF" opacity="0.9"/>
+                  <path d="M 72,118 C 82,126 100,126 110,118" stroke="#3A1703" stroke-width="1.4" opacity="0.45" stroke-dasharray="2,2"/>
+                  <path d="M 76,128 C 84,134 96,134 104,128" stroke="#3A1703" stroke-width="1.2" opacity="0.4"/>
+
+                  <!-- Fresh Mint / Herb Sprig at Stem -->
+                  <ellipse cx="90" cy="16" rx="4" ry="2.5" fill="#3D200B"/>
+                  <path d="M 90,16 C 85,5 72,2 62,6 C 66,16 78,20 90,16 Z" fill="url(#sprigGrad)" stroke="#1B4D21" stroke-width="1"/>
+                  <path d="M 90,16 Q 75,10 62,6" stroke="#D9F99D" stroke-width="1" stroke-linecap="round"/>
+                  <path d="M 90,16 C 96,6 108,4 116,9 C 112,18 102,20 90,16 Z" fill="url(#sprigGrad)" stroke="#1B4D21" stroke-width="1"/>
+
+                  <!-- Fresh Dewdrop on Flesh -->
+                  <ellipse cx="62" cy="85" rx="4" ry="3" fill="#0E2E18" opacity="0.4"/>
+                  <ellipse cx="61" cy="84" rx="3.5" ry="2.6" fill="#FFFFFF" opacity="0.75"/>
+                  <circle cx="60" cy="83" r="1" fill="#FFFFFF"/>
+                </g>
+              </svg>
+            </div>
+
+            <!-- 4. Large 3D Botanical Leaves (Right Cluster - Draping over "Coaching") -->
+            <div class="reveal-elem elem-leaf-right" id="revElemLeafR">
+              <svg viewBox="0 0 240 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <filter id="leafInnerShadowR" x="-20%" y="-20%" width="150%" height="150%">
+                    <feDropShadow dx="-3" dy="6" stdDeviation="5" flood-color="#02140A" flood-opacity="0.85"/>
+                  </filter>
+                  <filter id="dewGlowR" x="-30%" y="-30%" width="160%" height="160%">
+                    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.5"/>
+                  </filter>
+
+                  <linearGradient id="leaf3dLightR" x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#A7F3D0"/>
+                    <stop offset="25%" stop-color="#34D399"/>
+                    <stop offset="60%" stop-color="#059669"/>
+                    <stop offset="100%" stop-color="#064E3B"/>
+                  </linearGradient>
+
+                  <linearGradient id="leaf3dDarkR" x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#059669"/>
+                    <stop offset="45%" stop-color="#047857"/>
+                    <stop offset="85%" stop-color="#064E3B"/>
+                    <stop offset="100%" stop-color="#022C22"/>
+                  </linearGradient>
+
+                  <linearGradient id="leafGlossR" x1="80%" y1="0%" x2="20%" y2="100%">
+                    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.6"/>
+                    <stop offset="35%" stop-color="#A7F3D0" stop-opacity="0.3"/>
+                    <stop offset="70%" stop-color="#10B981" stop-opacity="0"/>
+                  </linearGradient>
+
+                  <linearGradient id="leafBgGradR" x1="100%" y1="100%" x2="0%" y2="0%">
+                    <stop offset="0%" stop-color="#022C22"/>
+                    <stop offset="55%" stop-color="#065F46"/>
+                    <stop offset="100%" stop-color="#047857"/>
+                  </linearGradient>
+
+                  <radialGradient id="dewDropGradR" cx="35%" cy="35%" r="65%">
+                    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+                    <stop offset="40%" stop-color="#A7F3D0" stop-opacity="0.6"/>
+                    <stop offset="85%" stop-color="#059669" stop-opacity="0.8"/>
+                    <stop offset="100%" stop-color="#022C22" stop-opacity="0.95"/>
+                  </radialGradient>
+                </defs>
+
+                <!-- Background Stem & Companion Leaf -->
+                <g opacity="0.92">
+                  <path d="M 205,190 C 185,135 150,75 75,35" stroke="#163826" stroke-width="4.5" stroke-linecap="round"/>
+                  <path d="M 204,189 C 184,134 149,74 76,36" stroke="#487B5B" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M 185,175 C 205,125 175,70 100,50 C 85,100 130,155 185,175 Z" fill="url(#leafBgGradR)"/>
+                  <path d="M 185,175 Q 140,115 100,50" stroke="#34D399" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                </g>
+
+                <!-- Upper Budding Leaf Tip -->
+                <g opacity="0.95">
+                  <path d="M 105,45 C 85,18 55,10 30,15 C 40,35 68,52 105,45 Z" fill="#10B981" stroke="#064E3B" stroke-width="1.2"/>
+                  <path d="M 105,45 Q 65,30 30,15" stroke="#A7F3D0" stroke-width="1.4" opacity="0.8"/>
+                </g>
+
+                <!-- Foreground Dominant 3D Leaf (Draping Over "Coaching") -->
+                <g filter="url(#leafInnerShadowR)">
+                  <path d="M 205,180 C 210,110 165,45 60,25 C 50,90 110,155 205,180 Z" fill="url(#leaf3dDarkR)"/>
+                  <path d="M 205,180 C 220,115 190,55 60,25 C 115,65 170,120 205,180 Z" fill="url(#leaf3dLightR)"/>
+                  <path d="M 205,180 C 220,115 190,55 60,25" stroke="#D1FAE5" stroke-width="1.2" stroke-linecap="round" opacity="0.75"/>
+
+                  <!-- 3D Midrib Ridge -->
+                  <path d="M 207,182 C 167,125 117,72 59,24" stroke="#021C16" stroke-width="4.5" stroke-linecap="round" opacity="0.8"/>
+                  <path d="M 205,180 C 165,123 115,70 60,25" stroke="#6EE7B7" stroke-width="2.8" stroke-linecap="round"/>
+                  <path d="M 204,179 C 164,122 114,69 61,26" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" opacity="0.75"/>
+
+                  <!-- 3D Lateral Veins -->
+                  <path d="M 168,138 C 185,125 195,108 200,88" stroke="#A7F3D0" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
+                  <path d="M 140,110 C 160,95 172,78 178,60" stroke="#A7F3D0" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
+                  <path d="M 110,82 C 130,68 140,52 145,38" stroke="#A7F3D0" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/>
+
+                  <path d="M 160,130 C 142,135 125,132 108,122" stroke="#047857" stroke-width="1.4" stroke-linecap="round" opacity="0.85"/>
+                  <path d="M 132,102 C 112,105 95,102 80,90" stroke="#047857" stroke-width="1.4" stroke-linecap="round" opacity="0.85"/>
+
+                  <!-- Specular Gloss Sheen -->
+                  <path d="M 175,130 C 190,92 165,58 95,36 C 125,55 160,88 175,130 Z" fill="url(#leafGlossR)" opacity="0.75"/>
+
+                  <!-- 3D Morning Dewdrop with Caustic Reflection -->
+                  <g filter="url(#dewGlowR)">
+                    <ellipse cx="148" cy="78" rx="7.5" ry="5.5" fill="#021C16" opacity="0.6" transform="rotate(15 148 78)"/>
+                    <ellipse cx="150" cy="76" rx="7" ry="5.5" fill="url(#dewDropGradR)" transform="rotate(15 150 76)"/>
+                    <ellipse cx="149" cy="78" rx="4" ry="2.2" fill="#A7F3D0" opacity="0.85" transform="rotate(15 149 78)"/>
+                    <circle cx="152" cy="74" r="1.6" fill="#FFFFFF"/>
+                    <circle cx="149" cy="75" r="0.7" fill="#FFFFFF" opacity="0.8"/>
+                  </g>
+                </g>
+              </svg>
+            </div>
+
+            <!-- 5. Interactive Hint Pill -->
+            <div class="reveal-hint-pill">
+              <span>🌿 Move cursor over to unveil coaching text</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="hero-para">
+          No bland starvation diets. No synthetic pills. dt Mimmy creates science-backed, real Indian food plans
+          to reverse <strong class="text-lime">PCOS, Thyroid, Postpartum weight</strong>, and lifestyle disorders — from the root.
+        </p>
+
+        <!-- Specialty badges -->
+        <div class="hero-badges-grid">
+          <div class="hero-badge">🏅 Hormonal Imbalance</div>
+          <div class="hero-badge">👶 Postpartum Weightloss</div>
+          <div class="hero-badge">🩺 Lifestyle Reversal</div>
+          <div class="hero-badge">💪 Workout Coaching</div>
+        </div>
+
+        <div class="hero-btns">
+          <a href="#quiz" class="btn-primary" style="text-decoration:none;gap:8px;">
+            ✨ Start Free Health Quiz
+          </a>
+          <button onclick="openChatWith('Hey dt Mimmy! Tell me about your programs.')" class="btn-secondary">
+            💬 Chat with dt Mimmy
+          </button>
+        </div>
+      </div>
+
+      <!-- Social proof row -->
+      <div class="hero-social-proof">
+        <div class="hero-avatars" style="margin-right:8px;">
+          <img src="assets/figma/avatar1.png" alt="Client 1">
+          <img src="assets/figma/avatar2.png" alt="Client 2">
+          <img src="assets/figma/avatar3.png" alt="Client 3">
+        </div>
+        <p class="hero-happy-count">
+          <strong>906+</strong> Happy Community Members
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     STATS RIBBON (Authority Bar)
+═══════════════════════════════════════════ -->
+<section id="statsRibbon">
+  <div class="stats-grid">
+    <div>
+      <div class="stat-num">299+</div>
+      <div class="stat-label">Nutrition Protocols Published</div>
+    </div>
+    <div>
+      <div class="stat-num">906+</div>
+      <div class="stat-label">Instagram Community Members</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Non-Starvation Diet Plans</div>
+    </div>
+    <div>
+      <div class="stat-num">1-on-1</div>
+      <div class="stat-label">Daily WhatsApp Coaching Access</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FEATURES / SPECIALIZATIONS (Figma: Features Section)
+═══════════════════════════════════════════ -->
+<section id="features">
+  <div class="section-header">
+    <span class="label-tag">Clinical Expertise</span>
+    <h2 class="heading-lg" style="margin-top:20px;">Healing Your Body From Within</h2>
+    <p class="body-lg" style="margin-top:14px;">Rooted in biochemical individuality — not crash diets. We restore your endocrine & metabolic balance.</p>
+  </div>
+
+  <div class="features-grid">
+
+    <div class="feature-card">
+      <div class="feature-icon-wrap">
+        <span style="font-size:28px;">🌸</span>
+      </div>
+      <h3 class="feature-title">Hormonal Imbalance & PCOS</h3>
+      <p class="feature-para">Balance LH/FSH ratios, reverse insulin resistance, tame androgen excess, and regain natural menstrual regularity without lifelong synthetic pills. Acne, hair fall, and mood swings included.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon-wrap">
+        <span style="font-size:28px;">👶</span>
+      </div>
+      <h3 class="feature-title">Postpartum Weight Loss</h3>
+      <p class="feature-para">Nourish your milk supply while gently shedding the baby weight. Focus on core rebuilding, prolactin support, and restoring vital micronutrients — 100% safe for nursing moms.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon-wrap">
+        <span style="font-size:28px;">🩺</span>
+      </div>
+      <h3 class="feature-title">Lifestyle Disorder Reversal</h3>
+      <p class="feature-para">Evidence-based nutritional therapy for Hypothyroidism, Pre-Diabetes (HbA1c), Fatty Liver, gut bloating, and cholesterol stabilization through clinical root-cause correction.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon-wrap">
+        <span style="font-size:28px;">🏋️‍♀️</span>
+      </div>
+      <h3 class="feature-title">Custom Workout Coaching</h3>
+      <p class="feature-para">Cycle-synced home workouts tailored to your hormone phase and energy levels. Progressive resistance, fat-burn conditioning, and form correction via video check-ins.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon-wrap">
+        <span style="font-size:28px;">🥗</span>
+      </div>
+      <h3 class="feature-title">Indian Food-Friendly Plans</h3>
+      <p class="feature-para">Love roti, dal, paneer, and ghee? Great — so does Mimmy! All meal plans are built around your cultural preferences, local seasonal produce, and home kitchen reality.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon-wrap">
+        <span style="font-size:28px;">💬</span>
+      </div>
+      <h3 class="feature-title">Daily WhatsApp Accountability</h3>
+      <p class="feature-para">Direct 1-on-1 access to dt Mimmy. Send food photos, ask dining-out questions, get instant meal swaps. Weekly reviews with progressive plan adjustments included.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     HEALTH QUIZ — LEAD CONVERSION ENGINE
+═══════════════════════════════════════════ -->
+<section id="quiz">
+  <div class="section-header">
+    <span class="label-tag">2-Minute Free Assessment</span>
+    <h2 class="heading-lg" style="margin-top:20px;">Discover Your Personal Hormone &amp; Diet Blueprint</h2>
+    <p class="body-lg" style="margin-top:14px;">Answer a few quick questions to receive a preliminary metabolic evaluation and claim your <strong>Free 15-Min Discovery Call</strong> with dt Mimmy.</p>
+  </div>
+
+  <div class="quiz-card">
+    <!-- Progress -->
+    <div style="margin-bottom:28px;">
+      <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:#234338;margin-bottom:8px;">
+        <span id="quizStepLabel">Step 1 of 4: Health Goal</span>
+        <span id="quizPct">25%</span>
+      </div>
+      <div class="quiz-progress-bar-wrap">
+        <div class="quiz-progress-bar" id="quizBar" style="width:25%"></div>
+      </div>
+    </div>
+
+    <form id="quizForm" onsubmit="handleQuizSubmit(event)">
+
+      <!-- STEP 1 -->
+      <div class="quiz-step active" id="qStep1">
+        <h3 class="quiz-title">What is your primary wellness priority right now?</h3>
+        <div class="quiz-option-grid">
+          <label class="quiz-option">
+            <input type="radio" name="goal" value="Hormonal Imbalance & PCOS" checked>
+            <div class="quiz-option-label">
+              <strong>🌸 Hormonal Imbalance / PCOS</strong>
+              <span>Irregular cycles, acne, mood, stubborn fat</span>
+            </div>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="goal" value="Postpartum Weight Loss">
+            <div class="quiz-option-label">
+              <strong>👶 Postpartum Weight Loss</strong>
+              <span>Safe recovery while nursing, tummy tuck</span>
+            </div>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="goal" value="Lifestyle Disorder Reversal">
+            <div class="quiz-option-label">
+              <strong>🩺 Lifestyle Disorder Reversal</strong>
+              <span>Thyroid, Pre-Diabetes, Gut Issues, Lipids</span>
+            </div>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="goal" value="Sustainable Fat Loss & Toning">
+            <div class="quiz-option-label">
+              <strong>🥗 Fat Loss & Body Toning</strong>
+              <span>Drop 5–15 kg without crash dieting</span>
+            </div>
+          </label>
+        </div>
+        <div class="quiz-nav">
+          <button type="button" onclick="gotoStep(2)" class="btn-primary" style="font-size:15px;padding:14px 28px;">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="quiz-step" id="qStep2">
+        <h3 class="quiz-title">Which body signals do you notice? <small style="font-weight:500;color:#666;">(select all that apply)</small></h3>
+        <div class="quiz-option-grid">
+          <label class="quiz-option"><input type="checkbox" name="symptoms" value="Irregular/painful periods"> <div class="quiz-option-label"><strong>Irregular / painful periods</strong><span>Missing, delayed or heavy flow</span></div></label>
+          <label class="quiz-option"><input type="checkbox" name="symptoms" value="Stubborn belly fat" checked> <div class="quiz-option-label"><strong>Stubborn belly fat / plateau</strong><span>Not budging despite effort</span></div></label>
+          <label class="quiz-option"><input type="checkbox" name="symptoms" value="Afternoon energy crashes" checked> <div class="quiz-option-label"><strong>Afternoon fatigue & low energy</strong><span>Crashing by 3–4 PM daily</span></div></label>
+          <label class="quiz-option"><input type="checkbox" name="symptoms" value="Bloating & sluggish digestion"> <div class="quiz-option-label"><strong>Constant bloating</strong><span>Feeling heavy after meals</span></div></label>
+          <label class="quiz-option"><input type="checkbox" name="symptoms" value="Sugar cravings"> <div class="quiz-option-label"><strong>Intense sugar cravings</strong><span>Late night snacking urges</span></div></label>
+          <label class="quiz-option"><input type="checkbox" name="symptoms" value="Hair thinning / hormonal acne"> <div class="quiz-option-label"><strong>Hair thinning / facial acne</strong><span>Scalp shedding or cystic acne</span></div></label>
+        </div>
+        <div class="quiz-nav quiz-nav-left">
+          <button type="button" onclick="gotoStep(1)" class="btn-secondary" style="font-size:15px;padding:14px 24px;">← Back</button>
+          <button type="button" onclick="gotoStep(3)" class="btn-primary" style="font-size:15px;padding:14px 28px;">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="quiz-step" id="qStep3">
+        <h3 class="quiz-title">Your diet preference & lifestyle</h3>
+        <div style="margin-bottom:20px;">
+          <div class="form-label">Dietary Pattern</div>
+          <div class="quiz-option-grid">
+            <label class="quiz-option"><input type="radio" name="diet" value="Vegetarian" checked> <div class="quiz-option-label"><strong>🥗 Vegetarian</strong></div></label>
+            <label class="quiz-option"><input type="radio" name="diet" value="Eggetarian"> <div class="quiz-option-label"><strong>🍳 Eggetarian</strong></div></label>
+            <label class="quiz-option"><input type="radio" name="diet" value="Non-Vegetarian"> <div class="quiz-option-label"><strong>🍗 Non-Vegetarian</strong></div></label>
+            <label class="quiz-option"><input type="radio" name="diet" value="Vegan/Jain"> <div class="quiz-option-label"><strong>🌱 Vegan / Jain</strong></div></label>
+          </div>
+        </div>
+        <div>
+          <div class="form-label">Activity Level</div>
+          <div class="quiz-option-grid">
+            <label class="quiz-option"><input type="radio" name="activity" value="Sedentary" checked> <div class="quiz-option-label"><strong>Sedentary</strong><span>Desk job, &lt;4k steps/day</span></div></label>
+            <label class="quiz-option"><input type="radio" name="activity" value="Lightly Active"> <div class="quiz-option-label"><strong>Lightly Active</strong><span>Walks, busy home life</span></div></label>
+            <label class="quiz-option"><input type="radio" name="activity" value="Moderately Active"> <div class="quiz-option-label"><strong>Moderately Active</strong><span>Workout 3–4x/week</span></div></label>
+            <label class="quiz-option"><input type="radio" name="activity" value="Very Active"> <div class="quiz-option-label"><strong>Very Active</strong><span>Daily intense training</span></div></label>
+          </div>
+        </div>
+        <div class="quiz-nav quiz-nav-left">
+          <button type="button" onclick="gotoStep(2)" class="btn-secondary" style="font-size:15px;padding:14px 24px;">← Back</button>
+          <button type="button" onclick="gotoStep(4)" class="btn-primary" style="font-size:15px;padding:14px 28px;">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="quiz-step" id="qStep4">
+        <h3 class="quiz-title">Your measurements & contact to get your personalised plan</h3>
+
+        <div class="quiz-input-row">
+          <div>
+            <label class="form-label">Height (cm)</label>
+            <input type="number" class="form-input" id="qHeight" min="120" max="220" value="162" oninput="calcBMI()">
+          </div>
+          <div>
+            <label class="form-label">Weight (kg)</label>
+            <input type="number" class="form-input" id="qWeight" min="35" max="180" value="72" oninput="calcBMI()">
+          </div>
+          <div>
+            <label class="form-label">Target (kg)</label>
+            <input type="number" class="form-input" id="qTarget" min="35" max="150" value="60">
+          </div>
+        </div>
+
+        <div class="bmi-pill">
+          <span>⚖️ <strong>Live BMI:</strong> <span id="liveBMI">27.4 — Overweight / Metabolic Sluggishness</span></span>
+          <span style="font-size:12px;color:#234338;font-weight:700;">Personalised protocol recommended</span>
+        </div>
+
+        <div class="quiz-input-row-2">
+          <div>
+            <label class="form-label" for="qName">Your Name *</label>
+            <input type="text" class="form-input" id="qName" placeholder="e.g. Priya Sharma" required oninput="validateFieldLive('qName')">
+            <div class="form-error" id="qNameError"></div>
+          </div>
+          <div>
+            <label class="form-label" for="qPhone">WhatsApp Number *</label>
+            <input type="tel" class="form-input" id="qPhone" placeholder="10-digit WhatsApp number (e.g. 9876543210)" required oninput="validateFieldLive('qPhone')" onblur="validateFieldLive('qPhone')">
+            <div class="form-error" id="qPhoneError"></div>
+          </div>
+        </div>
+        <div style="margin-bottom:14px;">
+          <label class="form-label" for="qEmail">Email (optional)</label>
+          <input type="email" class="form-input" id="qEmail" placeholder="you@example.com" oninput="validateFieldLive('qEmail')" onblur="validateFieldLive('qEmail')">
+          <div class="form-error" id="qEmailError"></div>
+        </div>
+
+        <div class="quiz-nav quiz-nav-left">
+          <button type="button" onclick="gotoStep(3)" class="btn-secondary" style="font-size:15px;padding:14px 24px;">← Back</button>
+          <button type="submit" class="btn-primary" style="font-size:15px;padding:14px 32px;">
+            ✨ Get My Free Blueprint
+          </button>
+        </div>
+      </div>
+
+    </form>
+
+    <!-- Result Screen -->
+    <div id="quizResult" style="text-align:center;">
+      <div style="width:64px;height:64px;background:#EEF8D3;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:32px;">🏅</div>
+      <span style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#234338;background:#EEF8D3;padding:4px 14px;border-radius:999px;">Assessment Complete!</span>
+      <h3 style="font-size:28px;font-weight:800;color:#1A3129;margin:16px 0 6px;">Welcome, <span id="rName">Priya</span>! Your Blueprint is Ready</h3>
+      <p style="font-size:14px;color:#666;margin-bottom:24px;">Our metabolic algorithm analysed your body markers & hormone symptoms.</p>
+
+      <div class="result-score-grid">
+        <div class="result-score-card">
+          <div class="rc-label">Metabolic Readiness</div>
+          <div class="rc-val" id="rScore">82 / 100</div>
+          <div style="font-size:12px;color:#666;margin-top:4px;">Strong potential for rapid correction</div>
+        </div>
+        <div class="result-score-card">
+          <div class="rc-label">Root Focus Area</div>
+          <div class="rc-val" id="rFocus" style="color:#E76F51;font-size:16px;">Hormone & Insulin Reset</div>
+        </div>
+        <div class="result-score-card">
+          <div class="rc-label">Estimated Timeline</div>
+          <div class="rc-val" id="rTimeline">8–12 Weeks</div>
+        </div>
+      </div>
+
+      <div class="result-cta-box">
+        <div style="font-size:14px;font-weight:700;color:#CBEA7B;margin-bottom:10px;">✅ Your Free 15-Min Call With dt Mimmy is Ready</div>
+        <p style="font-size:14px;color:rgba(255,255,255,.85);margin-bottom:20px;">dt Mimmy has received your assessment. Click below to connect on WhatsApp and book your free discovery call!</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a id="rWhatsApp" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary" style="text-decoration:none;font-size:14px;background:#22c55e;padding:14px 28px;">
+            📲 Open WhatsApp with dt Mimmy
+          </a>
+          <button onclick="resetQuiz()" style="padding:14px 24px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;font-size:13px;font-weight:600;cursor:pointer;">Retake</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOD SWAPS (Figma: interactive section)
+═══════════════════════════════════════════ -->
+<section id="swaps">
+  <div class="section-header">
+    <span class="label-tag">Smart Nutritional Hacks</span>
+    <h2 class="heading-lg" style="margin-top:20px;">Craving Swaps dt Mimmy Recommends</h2>
+    <p class="body-lg" style="margin-top:14px;">You don't have to give up flavors you love. Swap inflammatory triggers for nutrient-dense nourishment.</p>
+  </div>
+
+  <div class="swap-tabs">
+    <button class="swap-tab active" onclick="renderSwap('sweet',this)">🍫 Sugar Cravings</button>
+    <button class="swap-tab" onclick="renderSwap('bloat',this)">🎈 PMS Bloating</button>
+    <button class="swap-tab" onclick="renderSwap('postpartum',this)">👶 Postpartum Fatigue</button>
+    <button class="swap-tab" onclick="renderSwap('night',this)">🌙 Late Night Munchies</button>
+  </div>
+
+  <div id="swapContent" class="swap-card-grid"></div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PRICING SECTION (Figma: Pricing Section)
+═══════════════════════════════════════════ -->
+<section id="pricing">
+  <div class="section-header">
+    <span class="label-tag">Transformative Coaching</span>
+    <h2 class="heading-lg" style="margin-top:20px;">Personalized Coaching Programs</h2>
+    <p class="body-lg" style="margin-top:14px;">Every program includes custom diet charts, workout coaching, and direct WhatsApp mentoring with dt Mimmy.</p>
+  </div>
+
+  <!-- Monthly / Yearly Toggle (Figma: Tabs) -->
+  <div class="pricing-tabs-wrap">
+    <div class="pricing-tabs">
+      <button class="pricing-tab active" onclick="setPricingPlan('monthly',this)">Monthly</button>
+      <button class="pricing-tab" onclick="setPricingPlan('yearly',this)">Yearly</button>
+    </div>
+    <p class="pricing-save-label">Save 40% on Yearly Plans</p>
+  </div>
+
+  <div class="pricing-grid">
+
+    <!-- Basic -->
+    <div class="pricing-card">
+      <div>
+        <div class="pricing-plan-name">4-Week Metabolic Reset</div>
+        <div class="pricing-plan-sub">Kickstart</div>
+      </div>
+      <p class="pricing-desc">Jumpstart your metabolism, detox your gut, and lose the initial 3–4 kg. Ideal first step toward long-term hormone balance.</p>
+      <div>
+        <div class="pricing-price" id="price1">₹3,499 <span>/month</span></div>
+        <ul style="font-size:14px;color:#333;line-height:2;margin-top:12px;list-style:none;">
+          <li>✅ Detailed bio-metabolic assessment</li>
+          <li>✅ Weekly customised meal charts</li>
+          <li>✅ Gut bloat & detox guide</li>
+          <li>✅ 1-on-1 weekly progress review</li>
+          <li>✅ Full client dashboard access</li>
+        </ul>
+      </div>
+      <button onclick="bookProgram('4-Week Metabolic Reset')" class="btn-primary">Inquire Now</button>
+    </div>
+
+    <!-- Premium — Featured -->
+    <div class="pricing-card featured" style="position:relative;">
+      <div class="pricing-featured-badge">⭐ Most Popular</div>
+      <div>
+        <div class="pricing-plan-name">12-Week Hormone Rebirth</div>
+        <div class="pricing-plan-sub">Complete Reversal</div>
+      </div>
+      <p class="pricing-desc">Comprehensive solution for PCOS, Thyroid, stubborn weight, and long-term habit transformation. Daily 1:1 with Mimmy.</p>
+      <div>
+        <div class="pricing-price" id="price2" style="color:#CBEA7B;">₹7,999 <span style="color:#EEF8D3;">/month</span></div>
+        <ul style="font-size:14px;color:#EEF8D3;line-height:2;margin-top:12px;list-style:none;">
+          <li>✅ Full endocrine & blood report review</li>
+          <li>✅ Bi-weekly customised diet adjustments</li>
+          <li>✅ Tailored home workout coaching</li>
+          <li>✅ <strong>Daily WhatsApp with dt Mimmy</strong></li>
+          <li>✅ Dining-out & travel survival guides</li>
+          <li>✅ VIP client portal with live chat</li>
+        </ul>
+      </div>
+      <button onclick="bookProgram('12-Week Hormone Rebirth')" class="btn-primary" style="background:#CBEA7B;">Join Now</button>
+    </div>
+
+    <!-- Ultimate -->
+    <div class="pricing-card">
+      <div>
+        <div class="pricing-plan-name">Postpartum Nurture & Core</div>
+        <div class="pricing-plan-sub">Maternal Wellness</div>
+      </div>
+      <p class="pricing-desc">Designed specifically for nursing moms and women recovering post-delivery. Safe, nourishing, and results-driven.</p>
+      <div>
+        <div class="pricing-price" id="price3">₹5,499 <span>/8 weeks</span></div>
+        <ul style="font-size:14px;color:#333;line-height:2;margin-top:12px;list-style:none;">
+          <li>✅ Lactation-preserving nutrition balance</li>
+          <li>✅ Diastasis recti core recovery</li>
+          <li>✅ Micronutrient repletion (Iron, Ca, B12)</li>
+          <li>✅ Continuous WhatsApp reassurance</li>
+          <li>✅ Quick 15-min low-prep meal collection</li>
+        </ul>
+      </div>
+      <button onclick="bookProgram('Postpartum Nurture & Core')" class="btn-primary">Inquire Now</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ABOUT DT MIMMY SECTION (With Slender & Fit Mascot)
+═══════════════════════════════════════════ -->
+<section id="about">
+  <div class="section-header">
+    <span class="label-tag">Meet Your Coach</span>
+    <h2 class="heading-lg" style="margin-top:20px;">The Heart &amp; Science Behind Nourish Delight</h2>
+    <p class="body-lg" style="margin-top:14px;">Healing doesn't come from starving your body. It comes from honoring it with real nourishment, ancient Indian culinary wisdom, and clinical endocrinology.</p>
+  </div>
+
+  <div class="about-grid">
+    <!-- Left Column: Coach dt Mimmy Profile Card & Credentials -->
+    <div class="about-card-mascot">
+      <div class="about-mascot-img-wrap">
+        <img src="assets/dt_mimmy_coach.jpg" alt="dt Mimmy - Clinical Dietitian & Founder" class="about-mascot-img">
+        <div class="about-coach-badge">
+          <span>✓ Certified Clinical Dietitian</span>
+        </div>
+      </div>
+      <div class="about-mascot-details">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:8px;">
+          <div>
+            <h3 style="font-size:22px;font-weight:800;color:#1A3129;">dt Mimmy</h3>
+            <p style="font-size:13px;color:#2D6A4F;font-weight:600;">Clinical Dietitian &amp; Wellness Coach</p>
+          </div>
+          <a href="https://instagram.com/mimsdiet7" target="_blank" rel="noopener noreferrer" class="about-insta-pill" title="View Instagram">
+            📸 @mimsdiet7
+          </a>
+        </div>
+        <div class="about-creds-row">
+          <span>🏅 Hormonal Health</span>
+          <span>👶 Postpartum Specialist</span>
+          <span>🩺 Lifestyle Disorders</span>
+        </div>
+        <p class="about-quote">
+          “You don't need to punish your body with bland salads and birth control pills to heal. True healing begins when you feed your body with compassion, science, and the wisdom of Indian nutrition.”
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Column: The Story & 4 Pillars of The Mimmy Method -->
+    <div class="about-story-col">
+      <div class="about-story-intro">
+        <span class="about-eyebrow">My Philosophy</span>
+        <h3 style="font-size:28px;font-weight:800;color:#1A3129;margin:8px 0 14px;line-height:1.2;">Root-Cause Recovery Through Wholesome Ghar Ka Khana</h3>
+        <p style="font-size:15px;color:#4C4C4D;line-height:1.75;margin-bottom:14px;">
+          Hi, I'm dt Mimmy! Through my clinical dietetics practice and community (<strong style="color:#1A3129;">@mimsdiet7</strong>), I've guided hundreds of Indian women to reverse stubborn hormonal imbalances, heal postpartum depletion, and lose stubborn visceral fat without giving up their favorite cultural foods.
+        </p>
+        <p style="font-size:15px;color:#4C4C4D;line-height:1.75;">
+          Indian bodies have unique metabolic sensitivities to refined seed oils, hidden sugars, and erratic meal timings. By pairing traditional spices (fennel, ajwain, methi, turmeric) with cycle-synced nutrition, we unlock your body's natural power to regulate cycles and burn fat sustainably.
+        </p>
+      </div>
+
+      <!-- 4 Pillars Grid -->
+      <div class="about-pillars-grid">
+        <div class="about-pillar">
+          <div class="pillar-icon">🥘</div>
+          <div>
+            <div class="pillar-title">100% Ghar Ka Khana</div>
+            <p class="pillar-desc">Rotis, dals, rice, paneer, and seasonal sabzis sequenced for flat glucose curves. Zero starvation, no exotic ingredients.</p>
+          </div>
+        </div>
+
+        <div class="about-pillar">
+          <div class="pillar-icon">🧬</div>
+          <div>
+            <div class="pillar-title">Root-Cause Hormonal Reversal</div>
+            <p class="pillar-desc">Targeting insulin sensitivity, gut flora, and androgen clearance to naturally restore regular cycles and clear skin.</p>
+          </div>
+        </div>
+
+        <div class="about-pillar">
+          <div class="pillar-icon">🍼</div>
+          <div>
+            <div class="pillar-title">Lactation &amp; Core Protection</div>
+            <p class="pillar-desc">Scientifically formulated postpartum protocols that rebuild pelvic core tone while protecting rich breast milk supply.</p>
+          </div>
+        </div>
+
+        <div class="about-pillar">
+          <div class="pillar-icon">💬</div>
+          <div>
+            <div class="pillar-title">Daily 1:1 WhatsApp Mentorship</div>
+            <p class="pillar-desc">You are never left alone with a static PDF. I personally review your meals, celebrate wins, and guide you through dining out.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;">
+        <button onclick="openChatWith('Hi dt Mimmy! I would love to learn more about your coaching philosophy.')" class="btn-primary" style="font-size:14px;padding:14px 26px;">
+          💬 Chat with dt Mimmy
+        </button>
+        <a href="#quiz" class="btn-secondary" style="font-size:14px;padding:14px 26px;text-decoration:none;">
+          ✨ Take Free Assessment
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     TESTIMONIALS (Figma: Testimonials Section)
+═══════════════════════════════════════════ -->
+<section id="testimonials">
+  <div class="section-header">
+    <span class="label-tag">Real Women • Real Science</span>
+    <h2 class="heading-lg" style="margin-top:20px;">Transformations That Speak</h2>
+    <p class="body-lg" style="margin-top:14px;">No magic pills. Just structured protocols, hormonal balancing, and daily accountability with dt Mimmy.</p>
+  </div>
+
+  <div class="testi-grid">
+    <!-- Card 1 -->
+    <div class="testi-card">
+      <div class="testi-body">
+        <img src="assets/figma/quote.svg" alt="" class="testi-quote" onerror="this.outerHTML='<span style=&quot;font-size:30px;&quot;>❝</span>'">
+        <p class="testi-text">"I had not gotten my periods naturally for 7 months due to severe PCOS. dt Mimmy's seed cycling and customized Indian meals gave me my cycle back without birth control pills. Lost 11.5 kg in 12 weeks!"</p>
+      </div>
+      <div class="testi-divider"></div>
+      <div class="testi-author">
+        <img src="assets/figma/testi1.png" alt="Pooja Sharma" onerror="this.style='width:60px;height:60px;border-radius:10px;background:#CBEA7B;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#1A3129;'">
+        <div>
+          <div class="testi-author-name">Pooja Sharma</div>
+          <div style="font-size:13px;color:#666;">PCOS Reversed • Delhi</div>
+          <div style="display:flex;gap:2px;margin-top:4px;">
+            <span style="color:#D4AF37;font-size:14px;">★★★★★</span>
+          </div>
+        </div>
+        <span style="margin-left:auto;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:#EEF8D3;color:#1A3129;">PCOS</span>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="testi-card">
+      <div class="testi-body">
+        <img src="assets/figma/quote.svg" alt="" class="testi-quote" onerror="this.outerHTML='<span style=&quot;font-size:30px;&quot;>❝</span>'">
+        <p class="testi-text">"I was terrified dieting would affect my baby's breastfeeding. Mimmy crafted meals full of lactation foods and home workouts. Lost all 14.2 kg postpartum and my milk supply actually increased!"</p>
+      </div>
+      <div class="testi-divider"></div>
+      <div class="testi-author">
+        <img src="assets/figma/testi2.png" alt="Rhea Mukherjee" onerror="this.style='width:60px;height:60px;border-radius:10px;background:#E5F5BD;display:flex;align-items:center;justify-content:center;'">
+        <div>
+          <div class="testi-author-name">Rhea Mukherjee</div>
+          <div style="font-size:13px;color:#666;">Postpartum Healing • Mumbai</div>
+          <div style="display:flex;gap:2px;margin-top:4px;">
+            <span style="color:#D4AF37;font-size:14px;">★★★★★</span>
+          </div>
+        </div>
+        <span style="margin-left:auto;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:#FFF3CD;color:#856404;">Postpartum</span>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="testi-card">
+      <div class="testi-body">
+        <img src="assets/figma/quote.svg" alt="" class="testi-quote" onerror="this.outerHTML='<span style=&quot;font-size:30px;&quot;>❝</span>'">
+        <p class="testi-text">"My doctor said I was heading into diabetes with HbA1c 6.6. In 4 months with dt Mimmy, my sugar normalized to 5.4, bloating vanished, and I dropped 9 kg without feeling hungry once."</p>
+      </div>
+      <div class="testi-divider"></div>
+      <div class="testi-author">
+        <img src="assets/figma/testi3.png" alt="Sunita Kapoor" onerror="this.style='width:60px;height:60px;border-radius:10px;background:#EEF8D3;'">
+        <div>
+          <div class="testi-author-name">Sunita Kapoor</div>
+          <div style="font-size:13px;color:#666;">Pre-Diabetes Reversed • Bangalore</div>
+          <div style="display:flex;gap:2px;margin-top:4px;">
+            <span style="color:#D4AF37;font-size:14px;">★★★★★</span>
+          </div>
+        </div>
+        <span style="margin-left:auto;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:#EEF8D3;color:#1A3129;">Thyroid</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls (Figma: Buttons Container) -->
+  <div class="testi-controls">
+    <button class="testi-btn" onclick="prevTesti()" aria-label="Previous">
+      <img src="assets/figma/arrow-left.svg" alt="" onerror="this.outerHTML='←'">
+    </button>
+    <div class="testi-indicators" id="testiDots">
+      <div class="testi-dot active"></div>
+      <div class="testi-dot"></div>
+      <div class="testi-dot"></div>
+    </div>
+    <button class="testi-btn" onclick="nextTesti()" aria-label="Next">
+      <img src="assets/figma/arrow-right.svg" alt="" onerror="this.outerHTML='→'">
+    </button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FAQ SECTION
+═══════════════════════════════════════════ -->
+<section id="faq">
+  <div class="section-header">
+    <span class="label-tag">Got Questions?</span>
+    <h2 class="heading-lg" style="margin-top:20px;">Frequently Asked Questions</h2>
+    <p class="body-lg" style="margin-top:14px;">Everything you need to know about starting your health journey with dt Mimmy.</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Will I have to stop eating roti, rice or Indian comfort food?
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Absolutely not! dt Mimmy strictly opposes giving up cultural staple foods. You will enjoy rotis (multigrain/jowar mixes), rice, dals, paneer, sabzis and homemade treats. We teach you food sequencing, portion balancing, and glycemic stabilization so your body burns fat without eliminating your favourites.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Can PCOS really be reversed without lifelong medication?
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Yes! PCOS is primarily an endocrine and insulin-signaling issue. By removing endocrine disruptors, healing gut inflammation, using evidence-based seed cycling, and balancing macronutrients, your ovaries can naturally restore ovulation and regulate cycles without dependency on birth control pills.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Is postpartum weight loss safe while breastfeeding?
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">100% safe. dt Mimmy ensures lactation is never compromised. We use galactagogues (fennel, cumin, methi, coconut water) and adequate caloric density so your milk supply remains rich while your metabolic rate activates to burn post-pregnancy fat stores.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How does the 1-on-1 coaching with dt Mimmy work?
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">You will have direct WhatsApp access to dt Mimmy. You can send photos of your meals, ask what to order when eating out, and receive weekly voice or video check-ins. You also get your dedicated Client Dashboard to track daily meals, water, and chat directly with Mimmy.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        I am a pure vegetarian / Jain. Will the plan work for me?
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Yes! We specialize in vegetarian, eggetarian, non-vegetarian, and Jain preferences. We ensure pure vegetarians achieve complete protein profiles using sprouts, paneer, tofu, nuts, seeds, and smart legume combinations.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     INSTAGRAM COMMUNITY CTA
+═══════════════════════════════════════════ -->
+<section id="socialCTA">
+  <h2>Join Our Wellness Community @mimsdiet7</h2>
+  <p>Daily nutrition reels, quick meal swaps, PCOS tips and client milestones shared with our 900+ community.</p>
+  <div class="social-btns">
+    <a href="https://instagram.com/mimsdiet7" target="_blank" rel="noopener noreferrer" class="btn-primary" style="text-decoration:none;background:linear-gradient(135deg,#E76F51,#F4A261,#D4AF37);">
+      📸 Follow @mimsdiet7 on Instagram
+    </a>
+    <a href="https://facebook.com/Mimsnourishdelight" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="text-decoration:none;background:#1877F2;border-color:#1877F2;color:white;">
+      👍 Mimsnourishdelight on Facebook
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER (Figma: Footer Section)
+═══════════════════════════════════════════ -->
+<footer id="footer">
+  <div class="footer-top">
+    <!-- Logo (Figma: Logo) -->
+    <div style="display:flex;align-items:center;gap:10px;">
+      <img src="assets/mimmy_mascot_avatar.svg" alt="dt Mimmy Mascot" style="width:40px;height:40px;border-radius:50%;border:1.5px solid #CBEA7B;">
+      <div>
+        <div style="font-size:18px;font-weight:800;color:#CBEA7B;">dt Mimmy</div>
+        <div style="font-size:11px;color:#EEF8D3;font-weight:500;">Nourish Delight</div>
+      </div>
+    </div>
+
+    <!-- Nav links (Figma: Buttons Container) -->
+    <div class="footer-links">
+      <a href="#hero">Home</a>
+      <a href="#about">About Mimmy</a>
+      <a href="#features">Specializations</a>
+      <a href="#quiz">Free Quiz</a>
+      <a href="#testimonials">Transformations</a>
+      <a href="#pricing">Programs</a>
+      <a href="#faq">FAQ</a>
+    </div>
+
+    <!-- Back to top (Figma: Sub Container / Button) -->
+    <div class="footer-goto-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <span>Go To Top</span>
+      <div class="footer-goto-btn">
+        <img src="assets/figma/arrow-up.svg" alt="↑" onerror="this.outerHTML='<span style=&quot;color:white;font-size:18px;&quot;>↑</span>'">
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact row (Figma: Container with email, phone, location) -->
+  <div class="footer-contact-row">
+    <div style="display:flex;gap:16px;flex-wrap:wrap;">
+      <div class="footer-contact-item">
+        <img src="assets/figma/icon-email.svg" alt="" onerror="this.outerHTML='📧'">
+        <span>hello@mimsnourishdelight.com</span>
+      </div>
+      <a href="https://wa.me/919835387146" target="_blank" rel="noopener noreferrer" class="footer-contact-item" style="color:inherit;text-decoration:none;" title="Chat with dt Mimmy on WhatsApp">
+        <img src="assets/figma/icon-phone.svg" alt="" onerror="this.outerHTML='📞'">
+        <span>Official WhatsApp Support</span>
+      </a>
+      <div class="footer-contact-item">
+        <img src="assets/figma/icon-location.svg" alt="" onerror="this.outerHTML='📍'">
+        <span>India — Coaching Available Globally</span>
+      </div>
+    </div>
+    <span class="footer-copy">© 2026 dt Mimmy Nourish Delight. All rights reserved.</span>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     CHATBOT WIDGET (Figma-styled)
+═══════════════════════════════════════════ -->
+<div id="chatWidget">
+  <button id="chatTrigger" onclick="toggleChat()">
+    <div class="ct-avatar">
+      <img src="assets/mimmy_mascot_avatar.svg" alt="Mimmy Mascot" style="background:#234338;">
+      <div class="online-dot"></div>
+    </div>
+    <div class="ct-label">
+      <strong>Chat with Mimmy</strong>
+      <small>Online &amp; Ready to Help</small>
+    </div>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CBEA7B" stroke-width="2.5" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </button>
+
+  <div id="chatDrawer">
+    <!-- Chat Header -->
+    <div class="chat-header">
+      <img src="assets/mimmy_mascot_avatar.svg" alt="dt Mimmy Mascot" class="chat-header-avatar" style="background:#234338;">
+      <div class="chat-header-info">
+        <strong>dt Mimmy</strong>
+        <small>Nourish Delight Wellness Guide</small>
+      </div>
+      <button class="chat-header-close" onclick="toggleChat()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- Quick Chips -->
+    <div class="chat-quick-chips">
+      <button class="chip" onclick="sendChat('How do I reverse PCOS naturally?')">🌸 PCOS</button>
+      <button class="chip" onclick="sendChat('Tell me about postpartum diet plans')">👶 Postpartum</button>
+      <button class="chip" onclick="sendChat('What are your program prices?')">💰 Pricing</button>
+      <button class="chip" onclick="sendChat('I want to book a free consultation')">📞 Book Call</button>
+    </div>
+
+    <!-- Messages -->
+    <div id="chatMsgs">
+      <div class="chat-bubble bot">Hello! 🌿 I'm dt Mimmy's wellness guide. Are you looking to balance hormones, lose postpartum weight, or reverse a lifestyle condition? Ask me anything!</div>
+    </div>
+
+    <!-- Input -->
+    <div class="chat-input-row">
+      <input id="chatInp" type="text" class="chat-input" placeholder="Ask about diet, PCOS, meals...">
+      <button class="chat-send-btn" onclick="sendChat()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     AUTH MODAL (Login + Firebase OTP Sign Up)
+═══════════════════════════════════════════ -->
+<div id="authModal" class="modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="toggleAuthModal()">✕</button>
+    <div class="modal-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    </div>
+    <h3 class="modal-title" id="authModalTitle">Client Portal</h3>
+    <p class="modal-sub" id="authModalSub">Access your meal plans, water tracker, and 1:1 chat with dt Mimmy</p>
+
+    <!-- Auth Tabs: Sign In / Create Account -->
+    <div class="auth-tabs">
+      <button id="authTabLogin" class="auth-tab active" type="button" onclick="switchAuthTab('login')">Sign In</button>
+      <button id="authTabSignup" class="auth-tab" type="button" onclick="switchAuthTab('signup')">Create Account (Sign Up)</button>
+    </div>
+
+    <!-- 1. SIGN IN VIEW -->
+    <div id="authLoginView">
+      <!-- Demo login -->
+      <div class="demo-box">
+        <p>Try instant demo access as <strong>Priya Sharma</strong> (Week 4 of Hormone Reset)</p>
+        <button onclick="loginDemo()" class="btn-primary" style="width:100%;justify-content:center;font-size:14px;">🚀 1-Click Client Login</button>
+      </div>
+
+      <!-- Quick Google Sign In (Disabled) -->
+      <button type="button" class="btn-google-auth disabled" id="btnGoogleLogin" disabled style="display:none;" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+        <span>Sign In with Google</span>
+      </button>
+
+      <div class="divider" style="display:none;">Or Sign In with Password</div>
+
+      <form onsubmit="handleLogin(event)">
+        <div style="margin-bottom:14px;">
+          <label class="form-label" for="authLoginInput">Email or WhatsApp Phone *</label>
+          <input type="text" class="form-input" id="authLoginInput" placeholder="Email or 10-digit mobile (e.g. 9876543210)" required oninput="validateFieldLive('authLoginInput')" onblur="validateFieldLive('authLoginInput')">
+          <div class="form-error" id="authLoginError"></div>
+        </div>
+        <div style="margin-bottom:20px;">
+          <label class="form-label" for="authPasswordInput">Password *</label>
+          <input type="password" class="form-input" id="authPasswordInput" placeholder="Enter your account password" required>
+          <div class="form-error" id="authPasswordError"></div>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;font-size:15px;padding:14px;">Sign In to Portal</button>
+      </form>
+
+      <p style="text-align:center;font-size:13px;color:var(--grey-50);margin-top:18px;">
+        New to dt Mimmy? <a href="javascript:void(0)" onclick="switchAuthTab('signup')" style="color:var(--dark-15);font-weight:700;text-decoration:underline;">Create New Account</a>
+      </p>
+    </div>
+
+    <!-- 2. SIGN UP VIEW (Firebase Mobile OTP Auth, Google & Cloud Database) -->
+    <div id="authSignupView" style="display:none;">
+      <!-- Step 1: User Profile & Mobile Number -->
+      <div id="suStepDetails">
+        <!-- Quick Google Sign Up (Disabled) -->
+        <button type="button" class="btn-google-auth disabled" id="btnGoogleSignup" disabled style="display:none;" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+          <span>Quick Sign Up with Google</span>
+        </button>
+
+        <div class="divider" style="display:none;margin:14px 0;">Or Sign Up with Mobile OTP</div>
+
+        <form onsubmit="handleSendSignupOtp(event)">
+          <div style="margin-bottom:10px;">
+            <label class="form-label" for="suName">Full Name *</label>
+            <input type="text" class="form-input" id="suName" placeholder="e.g. Ananya Sen" required oninput="validateFieldLive('suName')">
+            <div class="form-error" id="suNameError"></div>
+          </div>
+
+          <div style="margin-bottom:10px;">
+            <label class="form-label" for="suPhone">WhatsApp Mobile Number *</label>
+            <div style="position:relative;">
+              <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-weight:700;color:var(--grey-50);font-size:13px;">🇮🇳 +91</span>
+              <input type="tel" class="form-input" id="suPhone" placeholder="10-digit mobile (e.g. 9876543210)" style="padding-left:62px;" required oninput="validateFieldLive('suPhone')" onblur="validateFieldLive('suPhone')">
+            </div>
+            <div class="form-error" id="suPhoneError"></div>
+          </div>
+
+          <div style="margin-bottom:10px;">
+            <label class="form-label" for="suEmail">Email Address *</label>
+            <input type="email" class="form-input" id="suEmail" placeholder="e.g. ananya@gmail.com" required oninput="validateFieldLive('suEmail')" onblur="validateFieldLive('suEmail')">
+            <div class="form-error" id="suEmailError"></div>
+          </div>
+
+          <div style="margin-bottom:10px;">
+            <label class="form-label" for="suGoal">Primary Health Focus / Program *</label>
+            <select class="form-input" id="suGoal" style="cursor:pointer;">
+              <option value="12-Week Hormone Rebirth (PCOS &amp; Thyroid)">🌸 12-Week Hormone Rebirth (PCOS &amp; Thyroid)</option>
+              <option value="Postpartum Weight &amp; Nursing Recovery">🍼 Postpartum Weight &amp; Lactation Care</option>
+              <option value="Gut Detox &amp; Bloating Relief">🥑 Gut Detox &amp; Bloat Relief</option>
+              <option value="Custom Workout &amp; Nutrition Coaching">💪 Custom Workout &amp; Nutrition Coaching</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom:10px;">
+            <label class="form-label" for="suPassword">Create Password *</label>
+            <input type="password" class="form-input" id="suPassword" placeholder="Minimum 6 characters" required minlength="6" oninput="validateFieldLive('suPassword')">
+            <div class="form-error" id="suPasswordError"></div>
+          </div>
+
+          <div style="margin-bottom:12px;">
+            <label class="form-label" for="suPasswordConfirm">Confirm Password *</label>
+            <input type="password" class="form-input" id="suPasswordConfirm" placeholder="Re-enter your password" required minlength="6" oninput="validateFieldLive('suPasswordConfirm')">
+            <div class="form-error" id="suPasswordConfirmError"></div>
+          </div>
+
+          <!-- Invisible reCAPTCHA container for Google Firebase Phone Auth -->
+          <div id="recaptcha-container"></div>
+          <div class="form-error" id="suGeneralError" style="margin-bottom:10px;"></div>
+
+          <button type="submit" id="suSubmitPhoneBtn" class="btn-primary" style="width:100%;justify-content:center;font-size:15px;padding:13px;gap:8px;">
+            📲 Send OTP
+          </button>
+        </form>
+      </div>
+
+      <!-- Step 2: 6-Digit OTP Verification -->
+      <div id="suStepOtp" style="display:none;">
+        <div style="background:var(--green-97);border:1.5px solid var(--green-90);border-radius:12px;padding:14px 16px;margin-bottom:16px;text-align:center;">
+          <p style="font-size:13px;color:var(--grey-20);margin-bottom:4px;">
+            We've sent a 6-digit verification code to
+          </p>
+          <strong id="suTargetPhoneDisplay" style="color:var(--dark-15);font-size:15px;font-weight:800;"></strong>
+        </div>
+
+        <form onsubmit="handleVerifySignupOtp(event)">
+          <div style="margin-bottom:16px;">
+            <label class="form-label" for="suOtpCode" style="text-align:center;display:block;">Enter 6-Digit Verification Code *</label>
+            <input type="text" class="form-input" id="suOtpCode" maxlength="6" placeholder="• • • • • •" style="font-size:22px;letter-spacing:8px;text-align:center;font-weight:800;padding:12px;" required autofocus>
+            <div class="form-error" id="suOtpError" style="text-align:center;"></div>
+          </div>
+
+          <button type="submit" id="suVerifyOtpBtn" class="btn-primary" style="width:100%;justify-content:center;font-size:15px;padding:14px;gap:8px;">
+            ✅ Verify OTP &amp; Create Account
+          </button>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:12.5px;">
+            <a href="javascript:void(0)" onclick="resetSignupStep()" style="color:var(--grey-50);text-decoration:none;">← Edit Details</a>
+            <button id="suResendBtn" type="button" onclick="handleResendOtp()" style="background:none;border:none;color:var(--dark-15);font-weight:700;cursor:pointer;font-family:inherit;">Resend OTP</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 3: Google Sign-Up Second Page (Ask Remaining Details: Phone, Goal, Password) -->
+      <div id="suGoogleStep" style="display:none;">
+        <div class="google-user-badge">
+          <img id="suGoogleAvatar" src="assets/mimmy_mascot_avatar.svg" alt="Google Profile" style="width:38px;height:38px;border-radius:50%;object-fit:cover;border:1.5px solid var(--green-70);">
+          <div style="text-align:left;">
+            <div id="suGoogleName" style="font-weight:800;font-size:14px;color:var(--dark-15);"></div>
+            <div id="suGoogleEmail" style="font-size:12px;color:var(--grey-50);"></div>
+          </div>
+        </div>
+
+        <p style="font-size:12.5px;color:var(--grey-50);margin-bottom:14px;text-align:center;">
+          Almost there! Please provide your WhatsApp number, health focus, and set a password to finalize your account:
+        </p>
+
+        <form onsubmit="handleCompleteGoogleSignup(event)">
+          <div style="margin-bottom:12px;">
+            <label class="form-label" for="suGooglePhone">WhatsApp Mobile Number *</label>
+            <div style="position:relative;">
+              <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-weight:700;color:var(--grey-50);font-size:13px;">🇮🇳 +91</span>
+              <input type="tel" class="form-input" id="suGooglePhone" placeholder="10-digit mobile (e.g. 9876543210)" style="padding-left:62px;" required oninput="validateFieldLive('suGooglePhone')" onblur="validateFieldLive('suGooglePhone')">
+            </div>
+            <div class="form-error" id="suGooglePhoneError"></div>
+          </div>
+
+          <div style="margin-bottom:12px;">
+            <label class="form-label" for="suGoogleGoal">Primary Health Focus / Program *</label>
+            <select class="form-input" id="suGoogleGoal" style="cursor:pointer;">
+              <option value="12-Week Hormone Rebirth (PCOS &amp; Thyroid)">🌸 12-Week Hormone Rebirth (PCOS &amp; Thyroid)</option>
+              <option value="Postpartum Weight &amp; Nursing Recovery">🍼 Postpartum Weight &amp; Lactation Care</option>
+              <option value="Gut Detox &amp; Bloating Relief">🥑 Gut Detox &amp; Bloat Relief</option>
+              <option value="Custom Workout &amp; Nutrition Coaching">💪 Custom Workout &amp; Nutrition Coaching</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom:12px;">
+            <label class="form-label" for="suGooglePassword">Create Password *</label>
+            <input type="password" class="form-input" id="suGooglePassword" placeholder="Minimum 6 characters" required minlength="6" oninput="validateFieldLive('suGooglePassword')">
+            <div class="form-error" id="suGooglePasswordError"></div>
+          </div>
+
+          <div style="margin-bottom:16px;">
+            <label class="form-label" for="suGooglePasswordConfirm">Confirm Password *</label>
+            <input type="password" class="form-input" id="suGooglePasswordConfirm" placeholder="Re-enter your password" required minlength="6" oninput="validateFieldLive('suGooglePasswordConfirm')">
+            <div class="form-error" id="suGooglePasswordConfirmError"></div>
+          </div>
+
+          <div class="form-error" id="suGoogleGeneralError" style="margin-bottom:10px;"></div>
+
+          <button type="submit" id="suGoogleCompleteBtn" class="btn-primary" style="width:100%;justify-content:center;font-size:15px;padding:14px;gap:8px;">
+            🚀 Complete Sign Up &amp; Open Portal
+          </button>
+
+          <div style="text-align:center;margin-top:14px;">
+            <a href="javascript:void(0)" onclick="resetSignupStep()" style="font-size:12.5px;color:var(--grey-50);text-decoration:none;">← Choose Different Method</a>
+          </div>
+        </form>
+      </div>
+
+      <p style="text-align:center;font-size:13px;color:var(--grey-50);margin-top:18px;">
+        Already registered? <a href="javascript:void(0)" onclick="switchAuthTab('login')" style="color:var(--dark-15);font-weight:700;text-decoration:underline;">Sign In Here</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     GOOGLE ACCOUNT CHOOSER (Interactive System Accounts & OAuth Flow)
+     ═══════════════════════════════════════════════════════════════════ -->
+<div id="googleChooserModal" class="modal-overlay gc-overlay" style="display:none;" aria-hidden="true">
+  <div class="gc-card" role="dialog" aria-labelledby="gcTitle">
+    <!-- Top Google Brand Bar & Dismiss Button -->
+    <div class="gc-top-bar">
+      <div class="gc-brand">
+        <svg class="gc-google-icon" viewBox="0 0 24 24" width="20" height="20">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+        </svg>
+        <span class="gc-brand-text">Sign in with Google</span>
+      </div>
+      <button type="button" class="gc-close-btn" onclick="closeGoogleChooser()" aria-label="Close dialog">✕</button>
+    </div>
+
+    <!-- App Context Brand Header -->
+    <div class="gc-header">
+      <div class="gc-app-icon-wrap">
+        <img src="assets/mimmy_mascot_avatar.svg" alt="dt Mimmy Nourish Delight" class="gc-app-icon">
+      </div>
+      <h2 id="gcTitle" class="gc-title">Choose an account</h2>
+      <p class="gc-subtitle">to continue to <strong class="gc-app-name">dt Mimmy Nourish Delight</strong></p>
+    </div>
+
+    <!-- System Accounts List (Interactive: click any to login or sign up) -->
+    <div class="gc-accounts-list" id="gcAccountsList">
+      <!-- 1. Hritvik Ranjan 991920 -->
+      <div class="gc-account-item" onclick="selectGoogleAccount('ranjan.hritvik991920@gmail.com', 'Hritvik Ranjan', 'assets/mimmy_mascot_avatar.svg')" tabindex="0" role="button" aria-label="Sign in as Hritvik Ranjan">
+        <div class="gc-avatar-wrap">
+          <img src="assets/mimmy_mascot_avatar.svg" alt="Hritvik Ranjan" class="gc-avatar-img">
+        </div>
+        <div class="gc-details">
+          <div class="gc-name">Hritvik Ranjan</div>
+          <div class="gc-email">ranjan.hritvik991920@gmail.com</div>
+        </div>
+      </div>
+
+      <!-- 2. Hritvik Ranjan main -->
+      <div class="gc-account-item" onclick="selectGoogleAccount('ranjan.hritvik@gmail.com', 'Hritvik Ranjan', 'assets/mimmy_mascot_avatar.svg')" tabindex="0" role="button" aria-label="Sign in as Hritvik Ranjan">
+        <div class="gc-avatar-wrap">
+          <img src="assets/mimmy_mascot_avatar.svg" alt="Hritvik Ranjan" class="gc-avatar-img">
+        </div>
+        <div class="gc-details">
+          <div class="gc-name">Hritvik Ranjan</div>
+          <div class="gc-email">ranjan.hritvik@gmail.com</div>
+        </div>
+      </div>
+
+      <!-- 3. Bhavya Goyal college -->
+      <div class="gc-account-item" onclick="selectGoogleAccount('bgoyal1_be21@thapar.edu', 'Bhavya Goyal', null, '#5D4037', 'B')" tabindex="0" role="button" aria-label="Sign in as Bhavya Goyal">
+        <div class="gc-avatar-wrap">
+          <div class="gc-avatar-badge" style="background:#5D4037;">B</div>
+        </div>
+        <div class="gc-details">
+          <div class="gc-name">Bhavya Goyal</div>
+          <div class="gc-email">bgoyal1_be21@thapar.edu</div>
+        </div>
+      </div>
+
+      <!-- 4. pumpkin bimbo -->
+      <div class="gc-account-item" onclick="selectGoogleAccount('pumpkinbimbo1@gmail.com', 'pumpkin bimbo', null, '#1976D2', 'p')" tabindex="0" role="button" aria-label="Sign in as pumpkin bimbo">
+        <div class="gc-avatar-wrap">
+          <div class="gc-avatar-badge" style="background:#1976D2;">p</div>
+        </div>
+        <div class="gc-details">
+          <div class="gc-name">pumpkin bimbo</div>
+          <div class="gc-email">pumpkinbimbo1@gmail.com</div>
+        </div>
+      </div>
+
+      <!-- 5. Hritvik Ranjan 03 -->
+      <div class="gc-account-item" onclick="selectGoogleAccount('hritvikranjan03@gmail.com', 'Hritvik Ranjan', null, '#D32F2F', 'H')" tabindex="0" role="button" aria-label="Sign in as Hritvik Ranjan">
+        <div class="gc-avatar-wrap">
+          <div class="gc-avatar-badge" style="background:#D32F2F;">H</div>
+        </div>
+        <div class="gc-details">
+          <div class="gc-name">Hritvik Ranjan</div>
+          <div class="gc-email">hritvikranjan03@gmail.com</div>
+        </div>
+      </div>
+
+      <!-- 6. hritvik builds -->
+      <div class="gc-account-item" onclick="selectGoogleAccount('hritvik.builds@gmail.com', 'hritvik', null, '#E37400', 'h')" tabindex="0" role="button" aria-label="Sign in as hritvik">
+        <div class="gc-avatar-wrap">
+          <div class="gc-avatar-badge" style="background:#E37400;">h</div>
+        </div>
+        <div class="gc-details">
+          <div class="gc-name">hritvik</div>
+          <div class="gc-email">hritvik.builds@gmail.com</div>
+        </div>
+      </div>
+
+      <!-- 7. Bhavya Goyal personal -->
+      <div class="gc-account-item" onclick="selectGoogleAccount('bhavyagoyal867@gmail.com', 'Bhavya Goyal', null, '#7B1FA2', 'B')" tabindex="0" role="button" aria-label="Sign in as Bhavya Goyal">
+        <div class="gc-avatar-wrap">
+          <div class="gc-avatar-badge" style="background:#7B1FA2;">B</div>
+        </div>
+        <div class="gc-details">
+          <div class="gc-name">Bhavya Goyal</div>
+          <div class="gc-email">bhavyagoyal867@gmail.com</div>
+        </div>
+      </div>
+
+      <!-- 8. Droner Droid -->
+      <div class="gc-account-item" onclick="selectGoogleAccount('dronersharma@gmail.com', 'Droner Droid', null, '#3F51B5', 'D')" tabindex="0" role="button" aria-label="Sign in as Droner Droid">
+        <div class="gc-avatar-wrap">
+          <div class="gc-avatar-badge" style="background:#3F51B5;">D</div>
+        </div>
+        <div class="gc-details">
+          <div class="gc-name">Droner Droid</div>
+          <div class="gc-email">dronersharma@gmail.com</div>
+        </div>
+      </div>
+
+      <!-- 9. Use another account (Opens real Google sign-in page) -->
+      <div class="gc-account-item gc-use-another" onclick="handleUseAnotherGoogleAccount()" tabindex="0" role="button" aria-label="Use another account">
+        <div class="gc-avatar-wrap">
+          <div class="gc-avatar-icon-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="gc-details">
+          <div class="gc-name gc-name-another">Use another account</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Disclaimers -->
+    <div class="gc-footer">
+      <p class="gc-footer-text">
+        Before using this app, you can review dt Mimmy Nourish Delight's
+        <a href="javascript:void(0)" onclick="openLegalNotice('privacy')">Privacy Policy</a> and
+        <a href="javascript:void(0)" onclick="openLegalNotice('terms')">Terms of Service</a>.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     CLIENT DASHBOARD
+═══════════════════════════════════════════ -->
+<div id="dashOverlay" class="modal-overlay" style="align-items:flex-start;">
+  <div class="dash-box" style="margin:24px auto;">
+    <!-- Header -->
+    <div class="dash-header">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div class="dash-avatar">PS</div>
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span class="dash-name" id="dashClientName">Priya Sharma</span>
+            <span class="dash-badge">Active Client</span>
+          </div>
+          <div class="dash-program">12-Week Hormone &amp; Metabolism Reset — Week 4 of 12</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <button onclick="switchToLeads()" class="btn-dark" style="font-size:13px;padding:10px 16px;gap:6px;">
+          👥 Leads CRM
+        </button>
+        <button onclick="logoutDash()" style="padding:10px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:transparent;color:#EEF8D3;font-size:13px;font-weight:600;cursor:pointer;">Log Out</button>
+        <button onclick="closeDash()" style="background:none;border:none;cursor:pointer;color:white;opacity:.7;padding:4px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="dash-tabs">
+      <button class="dash-tab-btn active" id="tab-meals" onclick="switchTab('meals')">🥗 Today's Meal Plan</button>
+      <button class="dash-tab-btn" id="tab-water" onclick="switchTab('water')">💧 Water & Habits</button>
+      <button class="dash-tab-btn" id="tab-chat" onclick="switchTab('chat')">💬 Chat with Mimmy</button>
+      <button class="dash-tab-btn" id="tab-progress" onclick="switchTab('progress')">📈 Progress</button>
+    </div>
+
+    <!-- Content -->
+    <div class="dash-content">
+
+      <!-- MEALS -->
+      <div class="dash-section active" id="ds-meals">
+        <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
+          <div>
+            <h3 style="font-size:20px;font-weight:800;color:#1A3129;">Wednesday — Week 4 Protocol</h3>
+            <p style="font-size:13px;color:#666;margin-top:4px;">Focus: Anti-androgen herbs, insulin stability & high-bioavailability fiber</p>
+          </div>
+          <span style="padding:6px 14px;background:#EEF8D3;border-radius:999px;font-size:12px;font-weight:700;color:#1A3129;">1,620 kcal • 78g Protein</span>
+        </div>
+        <div class="meal-grid">
+          <div class="meal-slot"><div class="meal-time">☀️ Morning Booster (7:30 AM)</div><div class="meal-name">Warm Fenugreek & Cinnamon Infusion + 5 Soaked Almonds</div><div class="meal-note">Improves morning fasting glucose and jumpstarts digestive bile flow.</div></div>
+          <div class="meal-slot"><div class="meal-time meal-macro">☕ Breakfast (9:00 AM) — 22g Protein</div><div class="meal-name">2 Sprouted Moong Dal Cheelas with Mint Coriander Chutney</div><div class="meal-note">Swap: 2 boiled eggs + 1 slice sourdough + sautéed spinach.</div></div>
+          <div class="meal-slot"><div class="meal-time">🍎 Mid-Day Snack (11:30 AM)</div><div class="meal-name">1 Fresh Tender Coconut Water + 1 Tbsp Roasted Pumpkin Seeds</div><div class="meal-note">Zinc & magnesium for natural progesterone synthesis.</div></div>
+          <div class="meal-slot"><div class="meal-time meal-macro">🍽️ Lunch (1:30 PM) — 25g Protein</div><div class="meal-name">1 Bowl Jowar Roti / Brown Rice + Palak Methi Dal + Cucumber Salad</div><div class="meal-note">Eat cucumber salad first for optimal fiber-first glucose curve!</div></div>
+          <div class="meal-slot"><div class="meal-time">🌅 Evening Bite (5:00 PM)</div><div class="meal-name">Roasted Makhana with Black Salt + 1 Cup Green Tea</div><div class="meal-note">Curbs 5 PM dopamine slump without spiking insulin.</div></div>
+          <div class="meal-slot"><div class="meal-time meal-macro">🌙 Dinner (8:00 PM) — 24g Protein</div><div class="meal-name">Grilled Paneer Tikka (100g) + Steamed Broccoli Soup</div><div class="meal-note">Light, anti-inflammatory dinner to facilitate deep REM sleep.</div></div>
+        </div>
+      </div>
+
+      <!-- WATER & HABITS -->
+      <div class="dash-section" id="ds-water">
+        <h3 style="font-size:20px;font-weight:800;color:#1A3129;margin-bottom:6px;">Daily Habit & Hydration Tracker</h3>
+        <p style="font-size:13px;color:#666;margin-bottom:24px;">Consistency is the secret to hormone recovery. Log your daily milestones!</p>
+
+        <div style="background:white;border:1px solid #EEF8D3;border-radius:14px;padding:24px;margin-bottom:20px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+            <div>
+              <div style="font-size:13px;font-weight:700;color:#234338;text-transform:uppercase;letter-spacing:.04em;">💧 Hydration Target — 2.5 Liters</div>
+              <div style="font-size:12px;color:#666;margin-top:2px;">Click each glass as you drink!</div>
+            </div>
+            <span id="waterLabel" style="font-size:14px;font-weight:700;color:#2563eb;">5 / 8 Glasses (1.6L)</span>
+          </div>
+          <div class="water-glasses-grid" id="waterGrid"></div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+          <label style="padding:18px;background:white;border:1px solid #EEF8D3;border-radius:12px;display:flex;align-items:center;gap:10px;cursor:pointer;">
+            <input type="checkbox" checked style="width:20px;height:20px;accent-color:#234338;">
+            <div><div style="font-size:14px;font-weight:700;color:#1A3129;">20-Min Workout</div><div style="font-size:12px;color:#666;">Core & hormonal routine</div></div>
+          </label>
+          <label style="padding:18px;background:white;border:1px solid #EEF8D3;border-radius:12px;display:flex;align-items:center;gap:10px;cursor:pointer;">
+            <input type="checkbox" checked style="width:20px;height:20px;accent-color:#234338;">
+            <div><div style="font-size:14px;font-weight:700;color:#1A3129;">Seed Cycling</div><div style="font-size:12px;color:#666;">Flax & pumpkin seeds AM</div></div>
+          </label>
+          <label style="padding:18px;background:white;border:1px solid #EEF8D3;border-radius:12px;display:flex;align-items:center;gap:10px;cursor:pointer;">
+            <input type="checkbox" style="width:20px;height:20px;accent-color:#234338;">
+            <div><div style="font-size:14px;font-weight:700;color:#1A3129;">7.5+ Hours Sleep</div><div style="font-size:12px;color:#666;">Screen off by 10:30 PM</div></div>
+          </label>
+        </div>
+      </div>
+
+      <!-- CHAT -->
+      <div class="dash-section" id="ds-chat">
+        <div class="portal-chat">
+          <div class="portal-chat-header">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <img src="assets/mimmy_mascot_avatar.svg" alt="Mimmy Mascot" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #CBEA7B;background:#234338;">
+              <div>
+                <div style="font-size:15px;font-weight:700;color:#1A3129;">dt Mimmy <span style="font-size:11px;background:#EEF8D3;padding:2px 8px;border-radius:4px;font-weight:600;">Your Diet Coach</span></div>
+                <div style="font-size:12px;color:#22c55e;font-weight:600;">● Active now</div>
+              </div>
+            </div>
+            <a href="https://wa.me/919835387146?text=Hi%20dt%20Mimmy!" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:12px;padding:10px 18px;text-decoration:none;gap:6px;">📲 WhatsApp Mimmy</a>
+          </div>
+          <div class="portal-msgs" id="portalMsgs">
+            <div style="display:flex;gap:10px;max-width:80%;">
+              <img src="assets/mimmy_mascot_avatar.svg" style="width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#234338;">
+              <div class="chat-bubble bot" style="border-radius:4px 14px 14px 14px;">Good morning Priya! 🌿 I reviewed your food diary. Great job drinking the cinnamon-fenugreek tea! Did you feel any afternoon bloating yesterday? <span style="display:block;font-size:11px;color:#999;margin-top:4px;">Yesterday 9:15 AM</span></div>
+            </div>
+            <div style="display:flex;justify-content:flex-end;">
+              <div class="chat-bubble user" style="border-radius:14px 14px 4px 14px;">No bloating at all! But I have a dinner with colleagues at an Italian restaurant tonight. What should I order? <span style="display:block;font-size:11px;color:rgba(255,255,255,.6);margin-top:4px;text-align:right;">Yesterday 11:40 AM</span></div>
+            </div>
+            <div style="display:flex;gap:10px;max-width:80%;">
+              <img src="assets/mimmy_mascot_avatar.svg" style="width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#234338;">
+              <div class="chat-bubble bot" style="border-radius:4px 14px 14px 14px;">Proud of you! Order minestrone soup first, then grilled veggies with paneer or thin-crust vegetable pizza (2 slices) with plenty of rocket leaves. Enjoy guilt-free! 🥗 <span style="display:block;font-size:11px;color:#999;margin-top:4px;">Yesterday 12:05 PM</span></div>
+            </div>
+          </div>
+          <div class="portal-input-row">
+            <input id="portalInp" type="text" class="form-input" style="flex:1;" placeholder="Message dt Mimmy directly...">
+            <button onclick="sendPortalMsg()" class="btn-primary" style="font-size:13px;padding:10px 18px;">Send</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROGRESS -->
+      <div class="dash-section" id="ds-progress">
+        <h3 style="font-size:20px;font-weight:800;color:#1A3129;margin-bottom:6px;">Your Transformation Progress</h3>
+        <p style="font-size:13px;color:#666;margin-bottom:24px;">Every kilogram shed is inflammation leaving your body.</p>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;">
+          <div style="background:white;border:1px solid #EEF8D3;border-radius:12px;padding:20px;">
+            <div style="font-size:11px;color:#999;font-weight:700;text-transform:uppercase;">Starting Weight</div>
+            <div style="font-size:28px;font-weight:800;color:#1A3129;margin-top:4px;">74.0 kg</div>
+            <div style="font-size:11px;color:#999;">Oct 14, 2026</div>
+          </div>
+          <div style="background:white;border:1px solid #EEF8D3;border-radius:12px;padding:20px;">
+            <div style="font-size:11px;color:#22c55e;font-weight:700;text-transform:uppercase;">Current Weight</div>
+            <div style="font-size:28px;font-weight:800;color:#22c55e;margin-top:4px;">68.2 kg</div>
+            <div style="font-size:11px;color:#22c55e;font-weight:600;">−5.8 kg Lost (Week 4)</div>
+          </div>
+          <div style="background:white;border:1px solid #EEF8D3;border-radius:12px;padding:20px;">
+            <div style="font-size:11px;color:#999;font-weight:700;text-transform:uppercase;">Target Goal</div>
+            <div style="font-size:28px;font-weight:800;color:#1A3129;margin-top:4px;">62.0 kg</div>
+            <div style="font-size:11px;color:#999;">Healthy BMI Range</div>
+          </div>
+        </div>
+
+        <div style="background:white;border:1px solid #EEF8D3;border-radius:14px;padding:24px;">
+          <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700;color:#1A3129;margin-bottom:12px;">
+            <span>Overall Goal Progress</span><span style="color:#234338;">48.3% Completed</span>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="width:48.3%"></div></div>
+          <p style="font-size:13px;text-align:center;margin-top:14px;color:#666;">🎉 <strong>5.8 kg lost</strong> of 12.0 kg total goal! You are right on track, Priya.</p>
+        </div>
+      </div>
+
+      <!-- LEADS CRM -->
+      <div class="dash-section" id="ds-leads">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
+          <div>
+            <h3 style="font-size:20px;font-weight:800;color:#1A3129;">Captured Client Leads</h3>
+            <p style="font-size:13px;color:#666;margin-top:4px;">Live submissions from the Health Quiz and Website Chatbot</p>
+          </div>
+          <span id="leadsBadge" style="padding:6px 16px;background:#FFF3CD;border-radius:999px;font-size:12px;font-weight:700;color:#856404;">1 Lead</span>
+        </div>
+        <div style="background:white;border-radius:12px;border:1px solid #EEF8D3;overflow:hidden;overflow-x:auto;">
+          <table class="leads-table">
+            <thead>
+              <tr>
+                <th>Name</th><th>WhatsApp</th><th>Health Goal</th><th>Weight / BMI</th><th>Date</th><th style="text-align:right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="leadsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BOOKING MODAL
+═══════════════════════════════════════════ -->
+<div id="bookingModal" class="modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeBooking()">✕</button>
+    <div class="modal-icon" style="background:#EEF8D3;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    </div>
+    <h3 class="modal-title">Book with dt Mimmy</h3>
+    <p class="modal-sub" id="bookingSubtitle">1:1 Consultation</p>
+    <form onsubmit="handleBooking(event)" style="margin-top:20px;">
+      <div style="margin-bottom:14px;">
+        <label class="form-label" for="bName">Your Name *</label>
+        <input type="text" class="form-input" id="bName" placeholder="Full Name" required oninput="validateFieldLive('bName')">
+        <div class="form-error" id="bNameError"></div>
+      </div>
+      <div style="margin-bottom:14px;">
+        <label class="form-label" for="bPhone">WhatsApp Number *</label>
+        <input type="tel" class="form-input" id="bPhone" placeholder="10-digit WhatsApp number (e.g. 9876543210)" required oninput="validateFieldLive('bPhone')" onblur="validateFieldLive('bPhone')">
+        <div class="form-error" id="bPhoneError"></div>
+      </div>
+      <div style="margin-bottom:14px;">
+        <label class="form-label" for="bEmail">Email (optional)</label>
+        <input type="email" class="form-input" id="bEmail" placeholder="you@example.com" oninput="validateFieldLive('bEmail')" onblur="validateFieldLive('bEmail')">
+        <div class="form-error" id="bEmailError"></div>
+      </div>
+      <div style="margin-bottom:20px;">
+        <label class="form-label" for="bNote">Health Goal or Concern</label>
+        <textarea class="form-input" id="bNote" rows="2" style="resize:vertical;" placeholder="e.g. Hormonal imbalance, PCOS..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;justify-content:center;font-size:15px;padding:14px;">📲 Confirm & Open WhatsApp</button>
+    </form>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
