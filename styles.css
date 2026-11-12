@@ -110,6 +110,18 @@ body {
 #topBanner .inner img.abstract { position: absolute; height: 100px; opacity: .6; pointer-events: none; }
 #topBanner .inner img.abstract.left { left: 0; top: -24px; }
 #topBanner .inner img.abstract.right { right: 0; top: -24px; transform: scaleX(-1); }
+.top-banner-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.top-banner-highlight {
+  color: #CBEA7B;
+  font-weight: 700;
+}
 #topBanner .dismiss {
   position: absolute;
   right: 24px;
@@ -142,31 +154,47 @@ body {
     padding: 8px 12px !important;
   }
   #topBanner .inner {
-    padding: 4px 34px 4px 4px !important;
-    justify-content: flex-start !important;
+    padding: 8px 36px 8px 10px !important;
+    display: block !important;
+    text-align: center !important;
+    position: relative !important;
+    border-radius: 8px !important;
   }
   #topBanner .top-banner-text {
-    font-size: 11.5px !important;
-    line-height: 1.35 !important;
+    font-size: 12px !important;
+    line-height: 1.45 !important;
     display: inline !important;
-    text-align: left !important;
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+    text-align: center !important;
   }
-  #topBanner .top-banner-text strong {
+  #topBanner .top-banner-highlight {
+    color: #CBEA7B !important;
     display: inline !important;
+    font-weight: 700 !important;
   }
-  #topBanner .abstract {
+  #topBanner .abstract,
+  #topBanner .inner img.abstract {
     display: none !important;
   }
   #topBanner .dismiss {
-    right: 4px !important;
+    right: 8px !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
-    width: 24px !important;
-    height: 24px !important;
+    width: 22px !important;
+    height: 22px !important;
+    background: #EF4444 !important;
+    border: none !important;
+    border-radius: 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    padding: 0 !important;
   }
   #topBanner .dismiss svg {
-    width: 14px !important;
-    height: 14px !important;
+    width: 13px !important;
+    height: 13px !important;
   }
 }
 
@@ -1979,63 +2007,97 @@ body {
   .water-glasses-grid { grid-template-columns: repeat(4, 1fr); }
   .dash-content { padding: 24px 20px; }
 
+  /* Move hero text strictly ON TOP */
   .hero-heading-wrap {
-    padding: 10px 14px !important;
-    margin-bottom: 20px !important;
+    position: relative !important;
+    padding: 14px 16px !important;
+    margin-bottom: 24px !important;
     max-width: 100% !important;
+    overflow: visible !important;
+    background: transparent !important;
+    box-shadow: none !important;
   }
-  .elem-steth {
-    width: 90px !important;
-    height: 64px !important;
-    right: 4px !important;
-    bottom: -16px !important;
-    top: auto !important;
-    left: auto !important;
+  .hero-heading {
+    position: relative !important;
+    z-index: 25 !important; /* Text is strictly on top of all 4 objects */
+    font-size: clamp(26px, 7.2vw, 34px) !important;
+    line-height: 1.25 !important;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.95), 0 0 32px rgba(7, 21, 16, 0.9) !important;
   }
+  .hero-heading .highlight {
+    color: var(--green-70) !important;
+    text-shadow: 0 0 25px rgba(203, 234, 123, 0.6), 0 4px 20px rgba(0, 0, 0, 0.9) !important;
+  }
+
+  /* All four botanical & clinical objects positioned AT THE BACK with a little blur */
+  .hero-reveal-veil {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 2 !important; /* Behind the heading text */
+    pointer-events: none !important;
+  }
+  .reveal-elem {
+    position: absolute !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+  }
+
+  /* 1. Avocado (Top-Left Background, blurred behind text) */
   .elem-avo,
   .elem-rice-bag {
-    width: 72px !important;
-    height: 72px !important;
-    top: -24px !important;
-    left: -8px !important;
+    width: 82px !important;
+    height: 82px !important;
+    top: -22px !important;
+    left: -12px !important;
     bottom: auto !important;
     right: auto !important;
+    opacity: 0.68 !important;
+    filter: blur(2.5px) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.75)) !important;
+    transform: rotate(-12deg) scale(0.96) !important;
   }
+
+  /* 2. Wheat Bud (Lower-Left Background, blurred behind text) */
   .elem-wheat {
-    width: 68px !important;
-    height: 94px !important;
-    bottom: -18px !important;
-    left: 4px !important;
+    width: 78px !important;
+    height: 108px !important;
+    bottom: -22px !important;
+    left: 2px !important;
     top: auto !important;
     right: auto !important;
+    opacity: 0.68 !important;
+    filter: blur(2.5px) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.75)) !important;
+    transform: rotate(8deg) scale(0.96) !important;
   }
-  .elem-leaf-left {
-    width: 76px !important;
-    height: 76px !important;
-    top: -22px !important;
-    left: -10px !important;
-    bottom: auto !important;
-    right: auto !important;
-  }
+
+  /* 3. Tulsi Leaf (Top-Right Background, blurred behind text) */
   .elem-leaf-right {
-    width: 84px !important;
-    height: 80px !important;
+    width: 92px !important;
+    height: 88px !important;
     top: -22px !important;
-    right: -6px !important;
+    right: -10px !important;
     bottom: auto !important;
     left: auto !important;
+    opacity: 0.68 !important;
+    filter: blur(2.5px) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.75)) !important;
+    transform: rotate(10deg) scale(0.96) !important;
   }
+
+  /* 4. Stethoscope (Lower-Right Background, blurred behind text) */
+  .elem-steth {
+    width: 105px !important;
+    height: 72px !important;
+    bottom: -18px !important;
+    right: 2px !important;
+    top: auto !important;
+    left: auto !important;
+    opacity: 0.62 !important;
+    filter: blur(2.5px) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.75)) !important;
+    transform: rotate(6deg) scale(0.96) !important;
+  }
+
+  /* Hint pill hidden on mobile because the hero text is already prominently on top */
   .reveal-hint-pill {
-    font-size: 10.5px !important;
-    padding: 5px 14px !important;
-    bottom: -24px !important;
-    white-space: nowrap !important;
-  }
-  .reveal-hint-pill .hint-desktop {
     display: none !important;
-  }
-  .reveal-hint-pill .hint-mobile {
-    display: inline !important;
   }
 
   /* Chatbot trigger refined for mobile */
