@@ -25,7 +25,7 @@
   <div class="inner">
     <img src="assets/figma/abstract-left.svg" alt="" class="abstract left">
     <img src="assets/figma/abstract-right.svg" alt="" class="abstract right">
-    <span style="font-size:16px; font-weight:600; color:#fff; display:flex; align-items:center; gap:8px;">
+    <span class="top-banner-text" style="font-size:16px; font-weight:600; color:#fff; display:flex; align-items:center; gap:8px;">
       🌱 Limited slots open — Book your <strong style="color:#CBEA7B;">&nbsp;Free 15-Min Discovery Call&nbsp;</strong> with dt Mimmy now!
     </span>
     <button class="dismiss" onclick="document.getElementById('topBanner').remove()" aria-label="Close" style="background:#EF4444; border:none; border-radius:6px; width:28px; height:28px; display:flex; align-items:center; justify-content:center; cursor:pointer;">
@@ -562,7 +562,8 @@
 
             <!-- 5. Interactive Hint Pill -->
             <div class="reveal-hint-pill">
-              <span>🌿 Move cursor over to unveil coaching text</span>
+              <span class="hint-desktop">🌿 Move cursor over to unveil coaching text</span>
+              <span class="hint-mobile">🌿 Tap to unveil coaching text</span>
             </div>
           </div>
         </div>

@@ -1911,31 +1911,33 @@ function initParallaxAndCursorEffects() {
       const blurVal = (2.5 * p).toFixed(2);
       const opacityVal = (1 - 0.62 * p).toFixed(3);
       const dropShadow = 'drop-shadow(0 12px 24px rgba(0, 0, 0, 0.6))';
+      const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+      const spread = isMobile ? 0.45 : 1.0;
 
       // 1. Avocado (top-left): glides outwards towards top-left (-65px, -35px)
       if (avo) {
-        avo.style.transform = `translate3d(${(-65 * p).toFixed(2)}px, ${(-35 * p).toFixed(2)}px, 0) rotate(${(-14 - 4 * p).toFixed(2)}deg) scale(${(1 - 0.08 * p).toFixed(3)})`;
+        avo.style.transform = `translate3d(${(-65 * spread * p).toFixed(2)}px, ${(-35 * spread * p).toFixed(2)}px, 0) rotate(${(-14 - 4 * p).toFixed(2)}deg) scale(${(1 - 0.08 * p).toFixed(3)})`;
         avo.style.opacity = opacityVal;
         avo.style.filter = `blur(${blurVal}px) ${dropShadow}`;
       }
 
       // 2. Wheat Bud (lower-left): glides outwards towards bottom-left (-55px, +40px)
       if (wheat) {
-        wheat.style.transform = `translate3d(${(-55 * p).toFixed(2)}px, ${(40 * p).toFixed(2)}px, 0) rotate(${(10 - 4 * p).toFixed(2)}deg) scale(${(1 - 0.08 * p).toFixed(3)})`;
+        wheat.style.transform = `translate3d(${(-55 * spread * p).toFixed(2)}px, ${(40 * spread * p).toFixed(2)}px, 0) rotate(${(10 - 4 * p).toFixed(2)}deg) scale(${(1 - 0.08 * p).toFixed(3)})`;
         wheat.style.opacity = opacityVal;
         wheat.style.filter = `blur(${blurVal}px) ${dropShadow}`;
       }
 
       // 3. Right Tulsi Leaf (top-right): glides outwards towards top-right (+65px, -35px)
       if (leafR) {
-        leafR.style.transform = `translate3d(${(65 * p).toFixed(2)}px, ${(-35 * p).toFixed(2)}px, 0) rotate(${(8 + 6 * p).toFixed(2)}deg) scale(${(1 - 0.08 * p).toFixed(3)})`;
+        leafR.style.transform = `translate3d(${(65 * spread * p).toFixed(2)}px, ${(-35 * spread * p).toFixed(2)}px, 0) rotate(${(8 + 6 * p).toFixed(2)}deg) scale(${(1 - 0.08 * p).toFixed(3)})`;
         leafR.style.opacity = opacityVal;
         leafR.style.filter = `blur(${blurVal}px) ${dropShadow}`;
       }
 
       // 4. Clinical Stethoscope (lower-right): glides outwards towards bottom-right (+70px, +40px)
       if (steth) {
-        steth.style.transform = `translate3d(${(70 * p).toFixed(2)}px, ${(40 * p).toFixed(2)}px, 0) rotate(${(10 * p).toFixed(2)}deg) scale(${(1 - 0.08 * p).toFixed(3)})`;
+        steth.style.transform = `translate3d(${(70 * spread * p).toFixed(2)}px, ${(40 * spread * p).toFixed(2)}px, 0) rotate(${(10 * p).toFixed(2)}deg) scale(${(1 - 0.08 * p).toFixed(3)})`;
         steth.style.opacity = opacityVal;
         steth.style.filter = `blur(${blurVal}px) ${dropShadow}`;
       }

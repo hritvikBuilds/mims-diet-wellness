@@ -137,7 +137,38 @@ body {
   width: 16px !important;
   height: 16px !important;
 }
-@media (max-width: 768px) { #topBanner { padding: 10px 16px; } }
+@media (max-width: 768px) {
+  #topBanner {
+    padding: 8px 12px !important;
+  }
+  #topBanner .inner {
+    padding: 4px 34px 4px 4px !important;
+    justify-content: flex-start !important;
+  }
+  #topBanner .top-banner-text {
+    font-size: 11.5px !important;
+    line-height: 1.35 !important;
+    display: inline !important;
+    text-align: left !important;
+  }
+  #topBanner .top-banner-text strong {
+    display: inline !important;
+  }
+  #topBanner .abstract {
+    display: none !important;
+  }
+  #topBanner .dismiss {
+    right: 4px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 24px !important;
+    height: 24px !important;
+  }
+  #topBanner .dismiss svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
 
 /* ── Navbar (De-congested & Polished) ── */
 #navbar {
@@ -279,8 +310,43 @@ body {
   #mobileMenuBtn { display: block; }
 }
 @media (max-width: 768px) {
-  #navbar { padding: 12px 18px; }
-  .nav-portal-btn { display: none; }
+  #navbar {
+    padding: 10px 14px !important;
+  }
+  .nav-inner {
+    gap: 8px !important;
+  }
+  .nav-logo {
+    gap: 8px !important;
+  }
+  .nav-avatar {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .nav-brand-title {
+    font-size: 15px !important;
+  }
+  .nav-brand-sub {
+    font-size: 10px !important;
+  }
+  .nav-right {
+    gap: 8px !important;
+  }
+  .nav-portal-btn {
+    display: none !important;
+  }
+  .nav-quiz-btn {
+    padding: 6px 12px !important;
+    font-size: 11.5px !important;
+    border-radius: 999px !important;
+  }
+  #mobileMenuBtn {
+    padding: 4px !important;
+  }
+  #mobileMenuBtn svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
 }
 
 /* Mobile nav dropdown */
@@ -947,6 +1013,9 @@ body {
   transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
   animation: pulseHintPill 2.8s ease-in-out infinite;
 }
+.reveal-hint-pill .hint-mobile {
+  display: none;
+}
 
 /* ── Revealed State: Smooth, Gentle Outward Glide Framing the Hero Text (Easy on Eyes, Discernible) ── */
 .hero-heading-wrap.revealed .elem-avo,
@@ -1155,16 +1224,71 @@ body {
 }
 
 @media (max-width: 768px) {
-  #hero { min-height: 720px; padding: 20px 0; }
-  .orbit-outer { width: 320px; height: 320px; }
-  .orbit-middle { width: 240px; height: 240px; }
-  .orbit-inner { width: 180px; height: 180px; }
-  .hero-heading { font-size: 32px; }
-  .hero-para { font-size: 16px; }
-  .hero-badges-grid { flex-direction: column; align-items: stretch; width: 100%; }
-  .hero-badge { justify-content: center; }
-  .hero-btns { flex-direction: column; width: 100%; }
-  .hero-btns .btn-primary, .hero-btns .btn-secondary { width: 100%; justify-content: center; }
+  #hero {
+    min-height: auto !important;
+    padding: 24px 0 48px 0 !important;
+    overflow: hidden !important;
+  }
+  .hero-content-overlay {
+    padding: 0 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .hero-tag {
+    font-size: clamp(13px, 3.8vw, 15px) !important;
+    padding-bottom: 4px !important;
+    border-bottom-width: 2px !important;
+  }
+  .orbit-outer { width: 300px; height: 300px; }
+  .orbit-middle { width: 220px; height: 220px; }
+  .orbit-inner { width: 160px; height: 160px; }
+  .hero-heading {
+    font-size: clamp(24px, 6.8vw, 32px) !important;
+    line-height: 1.22 !important;
+  }
+  .hero-para {
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+    padding: 0 4px !important;
+  }
+  .hero-badges-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 380px !important;
+    margin: 0 auto !important;
+  }
+  .hero-badge {
+    justify-content: center !important;
+    font-size: 11.5px !important;
+    padding: 8px 8px !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+  }
+  .hero-btns {
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 380px !important;
+    margin: 0 auto !important;
+    gap: 10px !important;
+  }
+  .hero-btns .btn-primary, .hero-btns .btn-secondary {
+    width: 100% !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+    padding: 12px 18px !important;
+  }
+  .hero-social-proof {
+    flex-direction: column !important;
+    gap: 8px !important;
+    text-align: center !important;
+    margin-top: 14px !important;
+  }
+  .hero-happy-count {
+    margin-left: 0 !important;
+    font-size: 14px !important;
+  }
 }
 
 /* ── STATS RIBBON ── */
@@ -1856,37 +1980,109 @@ body {
   .dash-content { padding: 24px 20px; }
 
   .hero-heading-wrap {
-    padding: 8px 12px;
+    padding: 10px 14px !important;
+    margin-bottom: 20px !important;
+    max-width: 100% !important;
   }
   .elem-steth {
-    width: 170px;
-    height: 110px;
-    right: 5px;
-    bottom: -16px;
+    width: 90px !important;
+    height: 64px !important;
+    right: 4px !important;
+    bottom: -16px !important;
+    top: auto !important;
+    left: auto !important;
   }
   .elem-avo,
   .elem-rice-bag {
-    width: 125px;
-    height: 125px;
-    left: 5px;
-    bottom: -20px;
+    width: 72px !important;
+    height: 72px !important;
+    top: -24px !important;
+    left: -8px !important;
+    bottom: auto !important;
+    right: auto !important;
+  }
+  .elem-wheat {
+    width: 68px !important;
+    height: 94px !important;
+    bottom: -18px !important;
+    left: 4px !important;
+    top: auto !important;
+    right: auto !important;
   }
   .elem-leaf-left {
-    width: 135px;
-    height: 125px;
-    top: -24px;
-    left: -15px;
+    width: 76px !important;
+    height: 76px !important;
+    top: -22px !important;
+    left: -10px !important;
+    bottom: auto !important;
+    right: auto !important;
   }
   .elem-leaf-right {
-    width: 135px;
-    height: 125px;
-    top: -22px;
-    right: -12px;
+    width: 84px !important;
+    height: 80px !important;
+    top: -22px !important;
+    right: -6px !important;
+    bottom: auto !important;
+    left: auto !important;
   }
   .reveal-hint-pill {
-    font-size: 10px;
-    padding: 4px 12px;
-    bottom: -28px;
+    font-size: 10.5px !important;
+    padding: 5px 14px !important;
+    bottom: -24px !important;
+    white-space: nowrap !important;
+  }
+  .reveal-hint-pill .hint-desktop {
+    display: none !important;
+  }
+  .reveal-hint-pill .hint-mobile {
+    display: inline !important;
+  }
+
+  /* Chatbot trigger refined for mobile */
+  #chatWidget {
+    bottom: 16px !important;
+    right: 16px !important;
+  }
+  #chatTrigger {
+    padding: 8px 14px 8px 8px !important;
+    gap: 8px !important;
+  }
+  #chatTrigger .ct-avatar {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  #chatTrigger .ct-label strong {
+    font-size: 12px !important;
+  }
+  #chatTrigger .ct-label small {
+    display: none !important;
+  }
+
+  /* Polish content cards on mobile */
+  .section-header {
+    margin-bottom: 32px !important;
+  }
+  .section-header h2 {
+    font-size: clamp(24px, 5.8vw, 32px) !important;
+  }
+  .feature-card {
+    padding: 24px 20px !important;
+  }
+  .pricing-card {
+    padding: 28px 20px !important;
+    gap: 20px !important;
+  }
+  .pricing-price {
+    font-size: 38px !important;
+  }
+  .pricing-plan-name {
+    font-size: 22px !important;
+  }
+  .quiz-card {
+    padding: 24px 16px !important;
+  }
+  .quiz-header {
+    margin-bottom: 20px !important;
   }
 }
 
